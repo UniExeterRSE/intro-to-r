@@ -1,1 +1,19 @@
+<html>
+<head>
+<style>
+a.button:link, a.button:visited {
+  background-color: #04AA6D;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.button:hover, a.button:active {
+  background-color: #1A1E1C;
+}
+</style>
+</head>
+
 {% assign sorted_pages = site.episodes | where:"toc","true" | sort: "order" %}
