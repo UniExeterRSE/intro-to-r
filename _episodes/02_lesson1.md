@@ -1,16 +1,13 @@
 ---
 layout: page
-title: Introduction to ...
+title: R training session 4
 order: 2
 session: 1
-length: 20
+length: 180
 toc: true
 ---
 
-## Learning Objectives
-At the end of this lesson you will be able to
 
-- define what a variable is
-
-## Introduction to variables
-
+<ol>
+{% include r_training_session_4.html %}
+</ol>
