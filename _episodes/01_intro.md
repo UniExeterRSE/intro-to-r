@@ -21,6 +21,6 @@ The workshop in organised into episodes of content, which can be seen in the wor
 
 Our aim is to be responsive to the needs of the group, both in person and virtual. Therefore, think of the schedule as a guide rather than a strict timetable. We welcome questions and queries as we go along, there are helpers in the room so raise your hand if you need assistance. There is also a dedicated helper for the virtual participants so please raise your virtual hand to attract their attention. In order to try to provide equality for virtual and in person participants we request that the Teams/Zoom chat is used minimally and all questions/comments etc are posted in our collaborative notes document. This will be saved and distributed at the end of the workshop.  
 
- Highlight the code of conduct - essentially be respectful and aware that we all have different backgrounds, xperiences and viewpoints.
+ Highlight the code of conduct - essentially be respectful and aware that we all have different backgrounds, experiences and viewpoints.
   
 Let's get started.
