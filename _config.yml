@@ -1,11 +1,11 @@
 # Basic options
-title: Workshop Name
-short_name: workshop-name
-developers: [A name]
+title: Introduction to R
+short_name: R intro
+developers: [Rebecca Smith, Fiona Warren, Theresa Wacker, Laura Roldan Gomez]
 description: One sentence description of workshop.
-n_sessions: 3
+n_sessions: 4
 prereq: NA
-url: https://uniexeterrse.github.io/repo-name
+url: https://uniexeterrse.github.io/intro-to-r
 
 # Specify that things in the episodes collection should be output.
 collections:
