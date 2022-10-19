@@ -1,8 +1,8 @@
 # Basic options
-title: Introduction to R
+title: R - Beginners to Intermediates
 short_name: R intro
 developers: [Rebecca Smith, Fiona Warren, Theresa Wacker, Laura Roldan Gomez]
-description: One sentence description of workshop.
+description: Over four sessions this workshop will provide an all-purpose introduction to the R programming language and may provide an accessible entry to computer programming in general.
 n_sessions: 4
 prereq: NA
 url: https://uniexeterrse.github.io/intro-to-r
