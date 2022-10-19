@@ -1,8 +1,8 @@
 ---
 layout: page
-title: R training session 4
-order: 2
-session: 1
+title:Introduction to Statistical Analysis
+order: 5
+session: 4
 length: 180
 toc: true
 ---
