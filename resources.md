@@ -7,7 +7,7 @@ title: Resources
 
 ### Session 1:
 
-<a href="data/worms.csv" download>worms.csv</a>
+[worms.csv](/data/worms.csv)
 
 ### Session 2:
 
