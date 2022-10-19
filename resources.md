@@ -7,7 +7,7 @@ title: Resources
 
 ### Session 1:
 
-<a href="https://github.com/LauraRoldanGomez/R-Training/blob/main/r_training_session_1/data/worms.csv" download>worms.csv</a>
+<a href="data/worms.csv" download>worms.csv</a>
 
 ### Session 2:
 
