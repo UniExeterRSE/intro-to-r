@@ -9,5 +9,5 @@ toc: true
 
 
 <ol>
-{% include r_training_session_1.html %}
+{% include r_training_session_2.html %}
 </ol>
