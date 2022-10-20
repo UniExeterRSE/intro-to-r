@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Introduction to Statistical Analysis
-order: 3
+order: 5
 session: 4
 length: 180
 toc: true
