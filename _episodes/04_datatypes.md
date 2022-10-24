@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Datatypes & Structures
-order: 4
+order: 5
 session: 2
 length: 180
 toc: true
