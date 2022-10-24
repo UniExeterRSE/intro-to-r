@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wrap up
-order: 7
+order: 8
 session: 4
 length: 10
 toc: true
