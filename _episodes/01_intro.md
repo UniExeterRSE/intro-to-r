@@ -9,7 +9,7 @@ toc: true
 
 ## Welcome
 
-Welcome to R- from beginner to intermediate. Our aim is to provide you with a comprehensive overview of the R programming language assuming no prior knowledge of R or programming. While the commands may be specific to R, some of the concepts are applicable to more programmin langugaes so what oyu learn over the course of these four sessions will provide you will skills that are transferable to other languages. 
+Welcome to **R: from beginner to intermediate**. Our aim is to provide you with a comprehensive overview of the R programming language assuming no prior knowledge of R or programming. While the commands may be specific to R, some of the concepts are applicable to more programmin langugaes so what oyu learn over the course of these four sessions will provide you will skills that are transferable to other languages. 
 
 Introduction of workshop leader and helpers.
 
