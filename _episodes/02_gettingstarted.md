@@ -67,7 +67,7 @@ A *Mirror* is a server somewhere in the world with a copy of the program. Choose
 
 <br><br>
 
-![Alt Text](/images/gif_windows.gif)
+![Alt Text](../images/gif_windows.gif)
 
 
 ## How to Install RStudio?
@@ -92,7 +92,7 @@ b. Click on the free version **Download** button
 
 <br>
 
-![Alt Text]("images/rstudio_windows.gif")
+![Alt Text](../images/rstudio_windows.gif)
 
 <br>
 
@@ -103,23 +103,23 @@ b. Click on the free version **Download** button
 Now, let's open RStudio and see what it looks like. 
 
 
-![Alt Text]("images/r_logo.png")
+![Alt Text](../images/r_logo.png)
 
 When you open RStudio, you will see a screen like this one:
 
-![Alt Text]("images/rstudio_screen.png")
+![Alt Text](../images/rstudio_screen.png)
 
 <br>
 
 Click on the icon to get the screen with four sections and I'll run you through all of them.
 
-![Alt Text]("images/rstudio_screen_1.png")
+![Alt Text](../images/rstudio_screen_1.png)
 
 <br>
 
 Now, you should see something like this:
 
-![Alt Text]("images/rstudio_screen_2.png")
+![Alt Text](../images/rstudio_screen_2.png)
 
 <br>
 
@@ -130,7 +130,7 @@ You can change the settings in your computer to reorder the different sections, 
 # Let's get you acquainted
 You should see 4 panes on your screen. We'll talk about each one.
 
-![Alt Text]("images/rstudio_screen_3.png")
+![Alt Text](../images/rstudio_screen_3.png)
 
 <br>
 
@@ -139,7 +139,7 @@ You should see 4 panes on your screen. We'll talk about each one.
 - Add a title, your name, and a date. Use the hash tag (#) symbol to tell R that this is a reading text and not a command.
 - Save it to your computer as you would do with a word or excel file.
 
-![Alt Text]("images/rstudio_screen_4.png")
+![Alt Text](../images/rstudio_screen_4.png)
 
 <br>
 
@@ -154,7 +154,7 @@ Let's play with the basic features of RStudio and populate our first script.
 
 3. Look at the outline. This feature is very useful to navigate your script when it starts growing.
 
-![Alt Text]("/images/rstudio_screen_outline.png")
+![Alt Text](../images/rstudio_screen_outline.png)
 
 <br>
 
