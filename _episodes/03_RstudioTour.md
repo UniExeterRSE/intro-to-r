@@ -11,7 +11,7 @@ toc: true
 
 Now, let's open RStudio and see what it looks like. 
 
-<img src="../images/r_logo.png" alt="drawing" width="50%"/>
+<img src="../images/r_logo.png" alt="drawing" width="25%"/>
 
 When you open RStudio, you will see a screen like this one:
 
