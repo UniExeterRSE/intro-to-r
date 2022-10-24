@@ -11,8 +11,7 @@ toc: true
 
 Now, let's open RStudio and see what it looks like. 
 
-
-![Alt Text](../images/r_logo.png)
+<img src="../images/r_logo.png" alt="drawing" width="50%"/>
 
 When you open RStudio, you will see a screen like this one:
 
