@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Wrap up
-order: 10
-session: 2
+order: 6
+session: 4
 length: 10
 toc: true
 ---
