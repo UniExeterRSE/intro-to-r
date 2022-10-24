@@ -33,7 +33,7 @@ This a hybrid workshop run over 4 sessions. The [schedule can be found here](htt
 
 | Dates | Time  | Venue | Sign up link | Registration closes |
 |--- |--- |--- | --- | --- |
-| 26th Oct, 2nd, 9th & 16th Nov 2022 | 1pm-4pm | Training Room 4, Old Library| [Register interest](https://forms.office.com/r/r9xTtwmXHR) | 20th Oct 2022 |
+| 26th Oct, 2nd, 9th & 16th Nov 2022 | 1pm-4pm | Training Room 4, Old Library|  | 20th Oct 2022 |
 
 Please note that our workshops are very popular, and places will be allocated on a first come, first served basis. You can register your interest for this course using the link above. Registration will close ~ 1 week before the workshop is scheduled to start. Your place will be confirmed during the week of the workshop.
 
