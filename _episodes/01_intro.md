@@ -35,6 +35,6 @@ This workshop, and the others in the series, were put together by a series of wo
 
 ## Housekeeping
 
-The workshop in organised into episodes of content, which can be seen in the workshop schedule available on the course website. Our aim is to have an official break every 60-90 mintues. Our aim is to be responsive to the needs of the group, both in person and virtual. Therefore, think of the schedule as a guide rather than a strict timetable. This workshop will be delivered by live coding. We welcome questions and queries as we go along, so raise your hand if you need assistance. We would like to highlight that we have a code of conduct and by attending this workshop you are agreeing to abide by it. 
+The workshop in organised into episodes of content, which can be seen in the workshop schedule available on the course website. Our aim is to have an official break every 60-90 mintues. Our aim is to be responsive to the needs of the group, both in person and virtual. Therefore, think of the schedule as a guide rather than a strict timetable. This workshop will be delivered by live coding. We welcome questions and queries as we go along, so raise your hand if you need assistance. We would like to highlight that we have a [code of conduct](https://uniexeterrse.github.io/intro-to-r/code.html) and by attending this workshop you are agreeing to abide by it. 
 
 Let's get started.
