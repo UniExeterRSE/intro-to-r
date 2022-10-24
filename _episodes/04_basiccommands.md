@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Familar with Rstudio
+title: Some initial commands
 order: 4
 session: 1
 length: 20
