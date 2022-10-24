@@ -67,4 +67,4 @@ A *Mirror* is a server somewhere in the world with a copy of the program. Choose
 
 <br><br>
 
-![Alt Text](/_images/gif_windows.gif)
+![Alt Text](/images/gif_windows.gif)
