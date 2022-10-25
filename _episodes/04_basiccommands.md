@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Running R commands
+title: Running commands in R
 order: 4
 session: 1
 length: 30
