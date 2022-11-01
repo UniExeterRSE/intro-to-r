@@ -352,7 +352,7 @@ pre code {
 <h1 class="title toc-ignore">R Training: Session 2</h1>
 <h3 class="subtitle">Data Types and Structures</h3>
 <h4 class="author">Theresa Wacker</h4>
-<h4 class="date">21/10/22</h4>
+<h4 class="date">26/10/22</h4>
 
 </div>
 
@@ -387,7 +387,7 @@ pre code {
 <li><a href="#data-structures"><span class="toc-section-number">5.1.4</span> Data Structures</a>
 <ul>
 <li><a href="#atomic-vectors">Atomic vectors</a></li>
-<li><a href="#task-6-8">Task 6 &amp; 8<br></a></li>
+<li><a href="#task-7-8">Task 7 &amp; 8<br></a></li>
 <li><a href="#task-9-10-11">Task 9, 10 &amp; 11</a></li>
 <li><a href="#data-type-coercion">Data type coercion</a></li>
 <li><a href="#task-12">Task 12<br></a></li>
@@ -675,11 +675,11 @@ v_log</code></pre>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
 <p><br></p>
 </div>
-<div id="task-6-8" class="section level4 unnumbered">
-<h4>Task 6 &amp; 8<br></h4>
+<div id="task-7-8" class="section level4 unnumbered">
+<h4>Task 7 &amp; 8<br></h4>
 <blockquote>
 <p>7.)What do <code>is.numeric()</code>, <code>is.integer()</code>, and <code>is.double()</code> return for the vectors that hold floating point number versus integers?<br />
-8.)What does <code>letters()</code> do?</p>
+8.) <code>letters</code> is a build in constant in R. Find out more by typing <code>?Constants</code> in your console. What happens when you enter <code>LETTERS</code> in your console?”</p>
 </blockquote>
 <hr />
 <p>The concatenate or combine <code>c()</code> function will explicitly <strong>construct</strong> a vector. We used it above to construct the logical vector. All the other vectors came about through other means, as in everyday coding, most vectors aren’t made explicitly with <code>c()</code>. They tend to be created with some generator, like the <code>1:n</code> shortcut, or via transformation of an existing object.
@@ -984,12 +984,12 @@ m</code></pre>
 <p>You can <strong>create a matrix from a vector</strong>:</p>
 <pre class="r"><code>m&lt;-sample(1:100, size=10)
 m</code></pre>
-<pre><code>##  [1] 89 31 10 18 93 43 90 47 53 62</code></pre>
+<pre><code>##  [1] 59 70 79 20 30 42 91 55 65 31</code></pre>
 <pre class="r"><code>dim(m)&lt;-c(2,5)
 m</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]   89   10   93   90   53
-## [2,]   31   18   43   47   62</code></pre>
+## [1,]   59   79   30   91   65
+## [2,]   70   20   42   55   31</code></pre>
 <p><strong><em>A lot is going on here. Let’s dissect it</em></strong>:</p>
 <ul>
 <li>We generate a random integer vector using <code>sample()</code>. <code>sample()</code> in this case randomly draws 10 (<code>size=10</code>) numbers from 1 to 100 (<code>1:100</code>)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</li>
