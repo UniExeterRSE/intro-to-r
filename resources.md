@@ -11,9 +11,9 @@ title: Resources
 
 ### Session 2:
 
-[code_session2.R](/data/code_session2.R)
+[r_training_session_2_script.R](/data/r_training_session_2_script.R)
 
-[slides](/_includes/presentation_session_2.html)
+[slides](https://lauraroldangomez.github.io/site/research_files/r_training_session_2/presentation_session_2.html#/title-slide)
 
 ### Session 3:
 
