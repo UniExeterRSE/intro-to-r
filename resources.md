@@ -11,6 +11,8 @@ title: Resources
 
 ### Session 2:
 
+[code_session2.r](/data/code_session2.r)
+
 ### Session 3:
 
 ### Session 4: 
