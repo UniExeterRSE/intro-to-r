@@ -13,7 +13,7 @@ title: Resources
 
 [code_session2.R](/data/code_session2.R)
 
-[slides](https://lauraroldangomez.github.io/site/research_files/r_training_session_2/presentation_session_2.html#/title-slide)
+[slides](/_includes/presentation_session_2.html)
 
 ### Session 3:
 
