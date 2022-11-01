@@ -3,7 +3,7 @@ layout: info_page
 title: Resources
 ---
 
-## Datasets required for workshop
+## Resources required for workshop
 
 ### Session 1:
 
@@ -11,7 +11,9 @@ title: Resources
 
 ### Session 2:
 
-[code_session2.r](/data/code_session2.r)
+[code_session2.R](/data/code_session2.R)
+
+[slides](https://lauraroldangomez.github.io/site/research_files/r_training_session_2/presentation_session_2.html#/title-slide)
 
 ### Session 3:
 
