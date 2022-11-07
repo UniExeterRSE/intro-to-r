@@ -17,6 +17,8 @@ title: Resources
 
 ### Session 3:
 
+[r_training_session_3_script.R](/data/r_training_session_3_script.R)
+
 ### Session 4: 
 
 ## Links to additional tutorials and materials
