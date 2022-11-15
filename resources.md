@@ -21,6 +21,13 @@ title: Resources
 
 ### Session 4: 
 
+[r_training_session_4.R](/data/r_training_session_4.R)
+
+[bp_dataset_session4.csv](/data/bp_dataset_session4.csv)
+
+[bp_dataset_codebook_session4.xlsx](/data/bp_dataset_codebook_session4.xlsx)
+
+
 ## Links to additional tutorials and materials
 
 R has a whole universe of free resources and filled with wonderful people willing to help. Here is a list of some links you may find handy
