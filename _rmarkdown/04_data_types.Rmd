@@ -33,10 +33,10 @@ By having our data stored in a variable we can manipulate it or start doing this
 
 Let's take a closer look at the `iris` data.
 
-First, let's ask what type of thing `dat` is:
+First, let's ask what type of thing `iris` is:
 
 ```{r}
-class(dat)
+class(iris)
 ```
 
 The output tells us that it is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
@@ -45,10 +45,10 @@ Data frames are very useful for storing data and you will find them elsewhere wh
 We can see the shape, or dimensions, of the data frame with the function `dim`:
 
 ```{r}
-dim(dat)
+dim(iris)
 ```
 
-This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
+This tells us that our data frame, `iris`, has `r nrow(iris)` rows and `r ncol(iris)` columns.
 
 
 To explore data frames, there are a number of relevant functions:
@@ -60,6 +60,13 @@ To explore data frames, there are a number of relevant functions:
 * ```ncol()```- number of columns
 * ```str()``` - structure of data frame - name, type and preview of data in each column
 * ```names()``` or ```colnames()``` - both show the names attribute for a data frame
+
+
+> ### Task
+> 
+> Use these functions to explore the mtcars dataset
+>
+>
 
 ## Subsetting datasets
 

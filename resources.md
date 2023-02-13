@@ -33,10 +33,16 @@ title: Resources
 R has a whole universe of free resources and filled with wonderful people willing to help. Here is a list of some links you may find handy
 
 [R Tutorials](https://education.rstudio.com/)
-R Books
+
+
+[Data Carpentry Introduction to R](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
+
+[Software Carpentry: Programming with R.](https://github.com/swcarpentry/r-novice-inflammation)
 
 [R Books](https://www.rstudio.com/resources/books/)
 
-[Stackoverflow](https://stackoverflow.com/) In this platform you can pose questions regarding your code and people will give you answers.
+[R for Data Science](https://r4ds.had.co.nz)
 
-[Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) You will find these cheatsheets useful further down the line. 
+[Stackoverflow](https://stackoverflow.com/) 
+
+[Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) 
