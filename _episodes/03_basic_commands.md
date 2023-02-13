@@ -150,13 +150,6 @@ We can do arithmetic with the variable:
 ## [1] 121
 {% endhighlight %}
 
-> ## Commenting
->
-> We can add comments to our code using the `#` character. It is useful to
-> document our code in this way so that others (and us the next time we
-> read it) have an easier time following what the code is doing.
-
-
 We can also change an object's value by assigning it a new value:
 
 
@@ -262,6 +255,20 @@ This is different from the way spreadsheets work.
 > mass <- mass * 2.0
 > age <- age - 20
 > ~~~
+
+
+
+### Assignment operator
+
+`<-` is the assignment operator. It assigns values on the right to objects on
+the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
+be read as 3 **goes into** `x`.  For historical reasons, you can also use `=` for assignments,
+but not in every context. Because of the [slight](http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html) [differences](https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html) in syntax,
+it is good practice to use always `<-` for assignments, except when specifying the values of
+arguments in functions, when only `=` should be used, see below.
+
+In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
+same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke.
 
 ### Naming R objects
 
