@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Getting Up and Running with R
-order: 2
+title: Establishing Good Practices from the Start
+order: 6
 session: 1
 length: 20
 toc: true
@@ -9,6 +9,8 @@ adapted: false
 ---
 
 # Good Practices
+
+Already mentioned recording the commands that you ran.
 
 Always keep in mind these *Good Practices*.
 

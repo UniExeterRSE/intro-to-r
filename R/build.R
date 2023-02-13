@@ -1,9 +1,4 @@
 build_one = function(io) {
-  # if output is not older than input, skip the
-  # compilation
-  if (!blogdown:::require_rebuild(io[2], io[1]))
-    return()
-
   message("* knitting ", io[1])
   if (xfun::Rscript(shQuote(c("R/build_one.R", io))) !=
       0) {
