@@ -16,7 +16,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
