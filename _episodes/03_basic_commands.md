@@ -90,6 +90,12 @@ You will note that in the R console a line of code has appeared.
 This is the R code that is required to change the current working directory using the function `setwd()`. The text string inside the "()" is the file path to the folder we want to change to. You should also see that in the File Pane (bottom-right), this has also changed to this new directory. We need to remember where we are such that we can navigate R to find files and locations appropriately.  If we ever get lost we can use `getwd()` to get the path of our current location.
 
 
+{% highlight r %}
+getwd()
+{% endhighlight %}
+
+
+
 {% highlight text %}
 ## [1] "/home/runner/work/intro-to-r/intro-to-r/_rmarkdown"
 {% endhighlight %}
@@ -111,10 +117,19 @@ A key concept in any programming language is that of a variable. A variable is j
 In R, we can create a new variable simply by assigning a value to it using `<-`
 
 
+{% highlight r %}
+weight_kg <- 55
+{% endhighlight %}
 
 
 Once a variable has a value, we can print it by typing the name of the variable and hitting `Enter` (or `return`).
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
+
+
+{% highlight r %}
+weight_kg
+{% endhighlight %}
+
 
 
 {% highlight text %}
@@ -122,6 +137,13 @@ In general, R will print to the console any object returned by a function or ope
 {% endhighlight %}
 
 We can do arithmetic with the variable:
+
+
+{% highlight r %}
+# weight in pounds:
+2.2 * weight_kg
+{% endhighlight %}
+
 
 
 {% highlight text %}
@@ -136,6 +158,14 @@ We can do arithmetic with the variable:
 
 
 We can also change an object's value by assigning it a new value:
+
+
+{% highlight r %}
+weight_kg <- 57.5
+# weight in kilograms is now
+weight_kg
+{% endhighlight %}
+
 
 
 {% highlight text %}
@@ -153,8 +183,23 @@ This means that assigning a value to one object does not change the values of ot
 For example, let's store the subject's weight in pounds in a variable:
 
 
+{% highlight r %}
+weight_lb <- 2.2 * weight_kg
+# weight in kg...
+weight_kg
+{% endhighlight %}
+
+
+
 {% highlight text %}
 ## [1] 57.5
+{% endhighlight %}
+
+
+
+{% highlight r %}
+# ...and in pounds
+weight_lb
 {% endhighlight %}
 
 
@@ -168,8 +213,23 @@ For example, let's store the subject's weight in pounds in a variable:
 and then change `weight_kg`:
 
 
+{% highlight r %}
+weight_kg <- 100.0
+# weight in kg now...
+weight_kg
+{% endhighlight %}
+
+
+
 {% highlight text %}
 ## [1] 100
+{% endhighlight %}
+
+
+
+{% highlight r %}
+# ...and weight in pounds still
+weight_lb
 {% endhighlight %}
 
 
