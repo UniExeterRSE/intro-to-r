@@ -34,3 +34,5 @@ defaults:
 
 # Build settings
 theme: jekyll-theme-slate
+
+exclude: ['*.Rmd']
