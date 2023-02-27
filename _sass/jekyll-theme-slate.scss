@@ -299,7 +299,6 @@ kbd {
 
 details {
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
-  width: 620px;
   font-size: 20px;
 }
 
@@ -322,7 +321,7 @@ details > p {
 }
 
 details[open] > summary {
-  background-color: #ccf;
+  background-color: #04AA6D;
 }
 
 /*******************************************************************************
