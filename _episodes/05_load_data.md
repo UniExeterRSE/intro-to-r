@@ -16,12 +16,13 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 
-More often than not you will need to load data from a file into R that you want to analyse. We are going to use a dataset in the file (worms.csv)[../data/worms.csv] which you can download from the course webpage. 
+More often than not you will need to load data from a file into R that you want to analyse. We are going to use a 
+dataset in the file (worms.csv)["../data/worms.csv"] which you can download from the course webpage. 
 This is a comma-separated values (CSV) format which means that a comma is used to indicate the end of a column.
 
 We need to tell our computer where is the file that contains the values - if we forget this step we'll get an error message when trying to read the file. We can load the data into R using `read.csv`.
 
-Assuming you have download the file into your current working directory, you can execute the following
+Assuming you have downloaded the file into your current working directory, you can execute the following
 
 
 {% highlight r %}
@@ -52,7 +53,8 @@ The header argument needs to be a logical, we have set `TRUE` indicating that th
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `worms.csv`.
 Try it out.
 
-`read.csv` read the file, but we can't use data unless we assign it to a variable. Let's re-run `read.csv` and save the result:
+`read.csv` read sthe file, but we can't use data unless we assign it to a variable. Let's re-run `read.csv` and 
+save the result:
 
 
 {% highlight r %}
@@ -61,33 +63,30 @@ df <- read.csv(file = "worms.csv", header = TRUE)
 
 
 
-{% highlight text %}
-## Warning in file(file, "rt"): cannot open file 'worms.csv': No such file or
-## directory
-{% endhighlight %}
+Use some of the functions we have introduced earlier can be used to summarise the properties of the worms dataset
+
+<details>
+	<summary> Other Options for Reading CSV Files </summary>
+	<pre>
+		
+ `read.csv` actually has many more arguments that you may find useful when
+ importing your own data in the future. You can learn more about these
+ options [here](http://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv/).
+
+    </pre>
+</details>
 
 
 
-{% highlight text %}
-## Error in file(file, "rt"): cannot open the connection
-{% endhighlight %}
+<details>
+	<summary> Loading Data with Headers </summary>
+	<pre>
+		
+ What happens if you forget to put `header = FALSE`? The default value is `header = TRUE`, which you can check 
+ with `?read.csv` or `help(read.csv)`. What do you expect will happen if you leave the default value? Before you 
+ run any code, think about what will happen to the first few rows of your data frame, and its overall size. Then 
+ run the following code and see if your expectations agree:
 
 
-> ## Other Options for Reading CSV Files
->
-> Use some of the functions we have introduced today to summarise the properties of the worms dataset 
->
-
-
-
-> ## Other Options for Reading CSV Files
->
-> `read.csv` actually has many more arguments that you may find useful when
-> importing your own data in the future. You can learn more about these
-> options in this [supplementary lesson](http://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv/).
-
-
-> ## Loading Data with Headers
->
-> What happens if you forget to put `header = FALSE`? The default value is `header = TRUE`, which you can check with `?read.csv` or `help(read.csv)`. What do you expect will happen if you leave the default value? Before you run any code, think about what will happen to the first few rows of your data frame, and its overall size. Then run the following code and see if your expectations agree:
->
+    </pre>
+</details>
