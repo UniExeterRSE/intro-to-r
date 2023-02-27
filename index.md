@@ -8,7 +8,7 @@ title: Course Information
 
 R is a programming language and software environment primarily focused on performing statistics, data analysis and visualisation. This course will provide an all-purpose introduction to the R programming language and may provide an accessible entry to computer programming in general. 
 
-Throughout the workshop learners will be taught using RStudio and introduced to best practises from the beginning including how to document your work in a script. Over four sessions you will learn how to import, manage and process data for statistical analysis and visualisation.  At the end of the workshop the participants will have a solid understanding of how to run R commands and the properties of R objects, providing a solid basis for self-guided learning of more complex analyses.
+Throughout the workshop learners will be taught using RStudio and introduced to best practises from the beginning including how to document your work in a script. Over three sessions you will learn how to import, manage and process data for statistical analysis and visualisation.  At the end of the workshop the participants will have a solid understanding of how to run R commands and the properties of R objects, providing a solid basis for self-guided learning of more complex analyses.
 
 
 ## This course will cover:  
