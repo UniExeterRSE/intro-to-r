@@ -330,3 +330,12 @@ by the use of arguments, this is additional information provide to the function 
 We have already used two functions in this workshop. First we used `setwd()`. We used this function with an argument, which was the path to the folder we 
 wanted to change to. We can reuse this function to change to an unlimited number of different folders on our computer. Then we used `getwd()`, this is an example 
 of a function that doesn't require any arguments. 
+
+<details>
+	<summary>Click to expand</summary>
+	<pre>
+		
+	Long content here
+	</pre>
+
+</details>
