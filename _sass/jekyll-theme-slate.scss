@@ -300,10 +300,12 @@ kbd {
 details {
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   width: 620px;
+  font-size: 20px;
 }
 
 details > summary {
   padding: 2px 6px;
+  font-size: 24px;
   width: 15em;
   background-color: #ddd;
   border: none;
