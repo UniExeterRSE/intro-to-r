@@ -26,7 +26,7 @@ command that has been executed. This console is the fundamental component of R a
 outside of RStudio. It is recognisable due to the blurb of text at the top (which provides details
 on which R version you are using) and the arrowhead cursor (>).
 
- ![Alt Text](../images/r_console_.png)
+ ![Alt Text](../images/r_console.png)
 
 
 You can type commands directly into the console
@@ -43,11 +43,12 @@ and press `Enter` to execute those commands. For example we can use R as a calcu
 ## [1] 4
 {% endhighlight %}
 
+
 # Interacting with R
 
 
 There are two main ways of interacting with R: using the console or by using
-a script. A script is a text files that contains your code. 
+a script. A script is a text file that contains your code. R scripts are often saved with the file extension .r or .R.
 
 We want our code and workflow to be reproducible. In other words, we want to write code in a way that
 anyone (including ou future selves) can easily replicate, such they will obtain the same results from our code
@@ -72,27 +73,28 @@ windows.
 If R is ready to accept commands, the R console shows a `>` prompt. If it
 receives a command (by typing, copy-pasting or sent from the script editor using
 <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd>), R will try to execute it, and when
-ready, show the results and come back with a new `>`-prompt to wait for new
-commands.
+ready, show the results and come back with a new `>`prompt to indicate it is ready for
+the next command.
 
-If R is still waiting for you to enter more code because it isn't complete yet,
+If R is still waiting for you to enter more text to complete the current command 
 the console will show a `+` prompt. It means that you haven't finished entering
-a complete command. This is because it is expecting a specific character, that finishes a command you have already started.
-For example, if you open a parenthesis or
-quotation,  it needs to closed before the command can be processed. i.e. you don't have the same number of left-parentheses as
-right-parentheses, or the same number of opening and closing quotation marks. This can be quite frustrating, but if
+a complete command. This is because it is expecting a specific character, that 
+finishes a command you have already started. For example, if you open a parenthesis or
+quotation,  it needs to be closed before the command can be processed. Another way of thinking about this 
+is R expects for every left-parentheses you include, a right-parentheses to accompany it. Similarly, it expects an even 
+number of quotation marks. This can be quite frustrating, as it might not be obvious what R is waiting for, but if
 you're in RStudio and this happens, click inside the console window and press
 `Esc`; this will cancel the incomplete command and return you to the `>` prompt.
 
 
 # Set the Working Directory
 
-When using R, often we want to analyse data stored in files on our computer, and save the output. 
+When using R, often we want to analyse data stored in files on our computer and potentially save some output. 
 
 It is important to note that we are always working in a folder or directory on our computer. There are times when this may not be 
 important (for example running a simulation from given parameters). 
 But if we want a specific file, we need to tell R where to find it. We do using by specifying the filepath. One common issue, when 
-starting out with programming is understanding where a program (in this case R/Rstudio) is looking for the files.
+starting out with programming is understanding where a program (in this case R/Rstudio) is looking for the file(s).
 
 Theoretically, we can find any file from any location given the correct filepath. However, to make our code simpler, it can be helpful 
 to change location, and move to a folder where the files we want to work on are located. The folder we are currently in is called the working directory. 
@@ -101,7 +103,8 @@ Let's create a folder on our computer, to store all the files we will work on fo
 file explorer window (outside of Rstudio) and create a folder called **R-workshop** somewhere memorable. For example on the Desktop.
 
 In Rstudio, we can change the working directory through the drop down menus by selecting options
- `Session` -> `Set Working Directory` -> `Choose Directory...` 
+
+`Session` -> `Set Working Directory` -> `Choose Directory...` 
  
 We then search for and select the folder we want.
 
@@ -111,9 +114,12 @@ You will note that in the R console a line of code has appeared.
 
 ![Alt Text](../images/rstudio_setwd.png)
 
-This is the R code that is required to change the current working directory using the function `setwd()`. The text string inside the "()" is the filepath 
-to the folder we want to change to. You should also see that in the File Pane (bottom-right), this has also changed to this new directory. We need to 
-remember where we are such that we can navigate R to find files and locations appropriately.  If we ever get lost we can use `getwd()` to get the path 
+This is the R command that is required to change the current working directory using the function `setwd()`. 
+The text string inside the "()" is the filepath to the folder we want to change to. If you save this to your script, 
+next time you won't need to click through the menus, you can execute this line of code instead.
+
+You should also see that in the File Pane (bottom-right), this has also changed to this new directory. We need to 
+know where we are such that we can navigate R to find files and locations appropriately.  If we ever get lost we can use `getwd()` to get the path 
 of our current location.
 
 
@@ -127,9 +133,12 @@ getwd()
 ## [1] "/home/runner/work/intro-to-r/intro-to-r/_rmarkdown"
 {% endhighlight %}
 
+
+
 <details>
 	<summary> Absolute vs Relative Filepaths </summary>
 	<pre>
+    <p>
 		
 We can specify filepaths in two ways: 
 
@@ -137,7 +146,7 @@ We can specify filepaths in two ways:
 Any file path that starts with "/" is an absolute filepath.
 2. Relative - this is where we direct R how to get to the new folder from where we currently are. For example to get to a sub-folder of the current 
 folder we can just provide the name of the current folder. We can use shortcuts to go up a folder (".."). Relative file paths do not start with "/"
-
+</p>
 </pre>
 </details>
 
