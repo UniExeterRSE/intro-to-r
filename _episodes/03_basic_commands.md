@@ -132,13 +132,13 @@ getwd()
 	<pre>
 		
 We can specify filepaths in two ways: 
->
+
 1. Absolute - this is where we direct R how to get there from the root folder, which is the uppermost folder in the system and is denoted "/". 
 Any file path that starts with "/" is an absolute filepath.
 2. Relative - this is where we direct R how to get to the new folder from where we currently are. For example to get to a sub-folder of the current 
 folder we can just provide the name of the current folder. We can use shortcuts to go up a folder (".."). Relative file paths do not start with "/"
 
-
+</pre>
 </details>
 
 
@@ -295,7 +295,7 @@ age <- age - 20
     adds the values of `weight_kg` and `weight_lb`,
     assigns the result to the `total_weight`,
     and finally prints the assigned value of the variable `total_weight`.
-
+    </pre>
 </details>
 
 
@@ -313,7 +313,7 @@ age <- age - 20
 
     In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
     same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke.
-
+    </pre>
 </details>
 
 
