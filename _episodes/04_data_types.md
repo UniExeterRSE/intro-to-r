@@ -18,7 +18,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 R has a number of data sets included for you to practice with. 
-We can get a list of these by running the command `data()`
+We can get a list of these by running the command ```data()```
 
 
 {% highlight r %}
@@ -32,7 +32,7 @@ By having our data stored in a variable we can manipulate it or start doing this
 
 Let's take a closer look at the `iris` data.
 
-First, let's ask what type of thing `iris` is:
+First, let's ask what type of thing `iris` is using the function ```class()```
 
 
 {% highlight r %}
@@ -46,9 +46,10 @@ class(iris)
 {% endhighlight %}
 
 The output tells us that it is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
-Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
+Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of
+ experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or dimensions, of the data frame with the function `dim`:
+We can see the shape, or dimensions, of the data frame with the function ```dim()```:
 
 
 {% highlight r %}
@@ -75,15 +76,15 @@ To explore data frames, there are a number of relevant functions:
 * ```names()``` or ```colnames()``` - both show the names attribute for a data frame
 
 
-> ### Task
-> 
-> Use these functions to explore the mtcars dataset
->
->
+## Activity: Data Exploration
 
-## Subsetting datasets
+Use these functions to explore the mtcars dataset
 
-If we want to get a single value from the data frame, we can provide an index in square brackets, just as we do in math:
+
+
+## Subsetting Data
+
+If we want to get a single value from the data frame, we can provide an index in square brackets, just as we do in math. This is called slicing.
 
 
 {% highlight r %}
@@ -110,45 +111,59 @@ iris[30, 20]
 ## NULL
 {% endhighlight %}
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+An index like ``[30, 20]``` selects a single element of a data frame, but we can select larger sections as well.
+For example, we can select the first three columns of values for the first four rows like this:
 
 
 {% highlight r %}
-iris[1:4, 1:10]
+iris[1:4, 1:3]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in `[.data.frame`(iris, 1:4, 1:10): undefined columns selected
+##   Sepal.Length Sepal.Width Petal.Length
+## 1          5.1         3.5          1.4
+## 2          4.9         3.0          1.4
+## 3          4.7         3.2          1.3
+## 4          4.6         3.1          1.5
 {% endhighlight %}
 
-The slice `1:4` means, "Start at index 1 and go to index 4."
+The slice ```1:4``` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
 
 {% highlight r %}
-iris[5:10, 1:10]
+iris[5:10, 1:3]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in `[.data.frame`(iris, 5:10, 1:10): undefined columns selected
+##    Sepal.Length Sepal.Width Petal.Length
+## 5           5.0         3.6          1.4
+## 6           5.4         3.9          1.7
+## 7           4.6         3.4          1.4
+## 8           5.0         3.4          1.5
+## 9           4.4         2.9          1.4
+## 10          4.9         3.1          1.5
 {% endhighlight %}
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
+We can use the function ```c()```, which stands for **c**ombine, to select non-contiguous values:
 
 
 {% highlight r %}
-iris[c(3, 8, 37, 56), c(10, 14, 29)]
+iris[c(3, 8, 37, 56), c(1,3)]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in `[.data.frame`(iris, c(3, 8, 37, 56), c(10, 14, 29)): undefined columns selected
+##    Sepal.Length Petal.Length
+## 3           4.7          1.3
+## 8           5.0          1.5
+## 37          5.5          1.3
+## 56          5.7          4.5
 {% endhighlight %}
 
 We also don't have to provide a slice for either the rows or the columns.
@@ -171,19 +186,32 @@ iris[5, ]
 
 
 {% highlight r %}
-# All rows from column 16
-iris[, 16]
+# All rows from column 2
+iris[, 2]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in `[.data.frame`(iris, , 16): undefined columns selected
+##   [1] 3.5 3.0 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 3.7 3.4 3.0 3.0 4.0 4.4 3.9 3.5
+##  [19] 3.8 3.8 3.4 3.7 3.6 3.3 3.4 3.0 3.4 3.5 3.4 3.2 3.1 3.4 4.1 4.2 3.1 3.2
+##  [37] 3.5 3.6 3.0 3.4 3.5 2.3 3.2 3.5 3.8 3.0 3.8 3.2 3.7 3.3 3.2 3.2 3.1 2.3
+##  [55] 2.8 2.8 3.3 2.4 2.9 2.7 2.0 3.0 2.2 2.9 2.9 3.1 3.0 2.7 2.2 2.5 3.2 2.8
+##  [73] 2.5 2.8 2.9 3.0 2.8 3.0 2.9 2.6 2.4 2.4 2.7 2.7 3.0 3.4 3.1 2.3 3.0 2.5
+##  [91] 2.6 3.0 2.6 2.3 2.7 3.0 2.9 2.9 2.5 2.8 3.3 2.7 3.0 2.9 3.0 3.0 2.5 2.9
+## [109] 2.5 3.6 3.2 2.7 3.0 2.5 2.8 3.2 3.0 3.8 2.6 2.2 3.2 2.8 2.8 2.7 3.3 3.2
+## [127] 2.8 3.0 2.8 3.0 2.8 3.8 2.8 2.8 2.6 3.0 3.4 3.1 3.0 3.1 3.1 3.1 2.7 3.2
+## [145] 3.3 3.0 2.5 3.0 3.4 3.0
 {% endhighlight %}
 
-> ## Addressing Columns by Name
->
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `iris[,'Age']`).
+<details>
+	<summary> Addressing Columns by Name </summary>
+	<pre>
+
+    Columns can also be addressed by name, with either the `$` operator (ie. `iris$Petal.Length`) or square brackets (ie. `iris[,'Petal.Length']`).
+
+</details>
+
 
 
 
