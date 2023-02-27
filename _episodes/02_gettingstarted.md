@@ -79,4 +79,3 @@ using RStudio is that all the information you need to write code is available in
 a single window. Additionally, with many shortcuts, autocompletion, and
 highlighting for the major file types you use while developing in R, RStudio
 will make typing easier and less error-prone.
-
