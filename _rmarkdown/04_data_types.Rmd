@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 R has a number of data sets included for you to practice with. 
-We can get a list of these by running the command `data()`
+We can get a list of these by running the command ```data()```
 
 ```{r echo=TRUE}
 data()
@@ -33,16 +33,17 @@ By having our data stored in a variable we can manipulate it or start doing this
 
 Let's take a closer look at the `iris` data.
 
-First, let's ask what type of thing `iris` is:
+First, let's ask what type of thing `iris` is using the function ```class()```
 
 ```{r}
 class(iris)
 ```
 
 The output tells us that it is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
-Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
+Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of
+ experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or dimensions, of the data frame with the function `dim`:
+We can see the shape, or dimensions, of the data frame with the function ```dim()```:
 
 ```{r}
 dim(iris)
@@ -62,15 +63,15 @@ To explore data frames, there are a number of relevant functions:
 * ```names()``` or ```colnames()``` - both show the names attribute for a data frame
 
 
-> ### Task
-> 
-> Use these functions to explore the mtcars dataset
->
->
+## Activity: Data Exploration
 
-## Subsetting datasets
+Use these functions to explore the mtcars dataset
 
-If we want to get a single value from the data frame, we can provide an index in square brackets, just as we do in math:
+
+
+## Subsetting Data
+
+If we want to get a single value from the data frame, we can provide an index in square brackets, just as we do in math. This is called slicing.
 
 ```{r}
 # first value in dat
@@ -79,24 +80,24 @@ iris[1, 1]
 iris[30, 20]
 ```
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+An index like ``[30, 20]``` selects a single element of a data frame, but we can select larger sections as well.
+For example, we can select the first three columns of values for the first four rows like this:
 
 ```{r}
-iris[1:4, 1:10]
+iris[1:4, 1:3]
 ```
 
-The slice `1:4` means, "Start at index 1 and go to index 4."
+The slice ```1:4``` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
 ```{r}
-iris[5:10, 1:10]
+iris[5:10, 1:3]
 ```
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
+We can use the function ```c()```, which stands for **c**ombine, to select non-contiguous values:
 
 ```{r}
-iris[c(3, 8, 37, 56), c(10, 14, 29)]
+iris[c(3, 8, 37, 56), c(1,3)]
 ```
 
 We also don't have to provide a slice for either the rows or the columns.
@@ -106,13 +107,18 @@ If we don't provide a slice for either rows or columns, e.g. `iris[, ]`, R retur
 ```{r}
 # All columns from row 5
 iris[5, ]
-# All rows from column 16
-iris[, 16]
+# All rows from column 2
+iris[, 2]
 ```
 
-> ## Addressing Columns by Name
->
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `iris[,'Age']`).
+<details>
+	<summary> Addressing Columns by Name </summary>
+	<pre>
+
+    Columns can also be addressed by name, with either the `$` operator (ie. `iris$Petal.Length`) or square brackets (ie. `iris[,'Petal.Length']`).
+
+</details>
+
 
 
 
