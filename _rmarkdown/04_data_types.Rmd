@@ -116,7 +116,7 @@ iris[, 2]
 	<pre>
 
     Columns can also be addressed by name, with either the `$` operator (ie. `iris$Petal.Length`) or square brackets (ie. `iris[,'Petal.Length']`).
-
+    </pre>
 </details>
 
 
