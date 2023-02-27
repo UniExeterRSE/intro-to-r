@@ -127,16 +127,19 @@ getwd()
 ## [1] "/home/runner/work/intro-to-r/intro-to-r/_rmarkdown"
 {% endhighlight %}
 
-> ## Absolute vs Relative Filepaths
+<details>
+	<summary> Absolute vs Relative Filepaths </summary>
+	<pre>
+		
+We can specify filepaths in two ways: 
 >
-> We can specify filepaths in two ways: 
->
-> 1. Absolute - this is where we direct R how to get there from the root folder, which is the uppermost folder in the system and is denoted "/". 
+1. Absolute - this is where we direct R how to get there from the root folder, which is the uppermost folder in the system and is denoted "/". 
 Any file path that starts with "/" is an absolute filepath.
-> 2. Relative - this is where we direct R how to get to the new folder from where we currently are. For example to get to a sub-folder of the current 
+2. Relative - this is where we direct R how to get to the new folder from where we currently are. For example to get to a sub-folder of the current 
 folder we can just provide the name of the current folder. We can use shortcuts to go up a folder (".."). Relative file paths do not start with "/"
->
->
+
+
+</details>
 
 
 # Defining Variables
@@ -267,34 +270,37 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
-> ## Activity: Assigning Values to Variables
->
-> Draw diagrams showing what variables refer to what values after each statement in the following program:
->
-> ~~~
-> mass <- 47.5
-> age <- 122
-> mass <- mass * 2.0
-> age <- age - 20
-> ~~~
+## Activity: Assigning Values to Variables
+
+Draw diagrams showing what variables refer to what values after each statement in the following program:
+
+~~~
+mass <- 47.5
+age <- 122
+mass <- mass * 2.0
+age <- age - 20
+~~~
 
 <details>
-	<summary>### Printing with Parentheses</summary>
+	<summary> Printing with Parentheses </summary>
 	<pre>
 		
-    An alternative way to print the value of a variable is to use () around the assignment statement.
-    As an example: `(total_weight <- weight_kg + weight_lb)` adds the values of `weight_kg` and `weight_lb`,
+    An alternative way to print the value of a variable is to use () around the 
+    assignment statement.
+
+    As an example: 
+    
+    `(total_weight <- weight_kg + weight_lb)` 
+    
+    adds the values of `weight_kg` and `weight_lb`,
     assigns the result to the `total_weight`,
     and finally prints the assigned value of the variable `total_weight`.
-
-
-	</pre>
 
 </details>
 
 
 <details>
-	<summary>### Assignment operator</summary>
+	<summary> Assignment operator </summary>
 	<pre>
 		
 	`<-` is the assignment operator. It assigns values on the right to objects on
@@ -308,15 +314,13 @@ This is different from the way spreadsheets work.
     In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
     same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke.
 
-	</pre>
-
 </details>
 
 
 
 
 
-### Naming objects in R
+## Naming objects in R
 
 You can use any combination of alphanumeric characters, along with dots and underscores, to name an R object. But there are a few ___exceptions___:
 
