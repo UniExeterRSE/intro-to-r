@@ -41,7 +41,7 @@ and press `Enter` to execute those commands. For example we can use R as a calcu
 There are two main ways of interacting with R: using the console or by using
 script files (plain text files that contain your code). We want our code and workflow to be reproducible. In other words, we want to write code in a way that
 anyone can easily replicate, such they can obtain the same results from our code
-on their computer. If we type our commands irectly into the Console,  they will be forgotten when you close the session. It is better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. 
+on their computer. If we type our commands directly into the Console,  they will be forgotten when you close the session. It is better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. 
 
 RStudio allows you to execute commands directly from the script editor by using
 the <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd> shortcut. The command on the current
