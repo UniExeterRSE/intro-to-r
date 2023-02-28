@@ -23,40 +23,40 @@ The R base function ```plot()``` can generate a range of different plots from so
 
 If we provide one vector of continous data, it plots that on the y-axis against the index on the x-axis.
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length)
 ```
 
 If we want to plot a scatterplot between two continuous variables, we provide both to the function. The order here can be important, if not 
 explicitly labeled as the x or y variable, R will take the first entry as the x variable and the second entry as the y variable. 
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
 Alternatively we can use the argument keywords to specify which variable should be plotted on which axis, in this case is doesn't matter which order we
 include the arguments. For example we can state the y variable first. 
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(y = iris$Sepal.Length, x = iris$Sepal.Width)
 ```
 
 You will see that R has generated the axis labels from the variable names. We can customise this with additional arguments (```xlab``` and ```ylab```) in the function.
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)")
 ```
 
 We can also change the colour of the points with the ```col``` argument. If we give it one colour, all the points will be changed to the same colour.
 
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = "red")
 ```
 
 Alternatively, we can provide a vector of colours, where the first colour will be the colour of the first point drawn, the second colour, the colour of the second point and so on. 
 This vector does have to be the same length as the number of points. For example if we provide a vector of three colours, this will recycled until all the points have been pointed. 
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = c("red", "blue", "#ddaa33"))
 ```
 
@@ -64,37 +64,39 @@ What has happened is the 1st,4th,7th etc are pointed in red, the 2nd,5th,8th etc
 
 If we want to colour the points by some categorial variable, we can use the fact that factors are represented as integers to subset a vector of colours.
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = c("red", "blue", "#ddaa33")[iris$Species])
 ```
 
 There are three levels in the factor ```iris$Species```, which are represent internal by the numbers 1,2,3. These integers can be used to index a vector of at 
-least three as shown below, and create a new vector, where each level is replaced by the same colour
+least three as shown below, and create a new vector, where each level is replaced by the same colour.
 
-```{r plot, include=TRUE}
+```{r, include=TRUE}
 iris$Species[1:10]
 as.numeric(iris$Species[1:10])
 c("red", "blue", "#ddaa33")[iris$Species[1:10]]
 ```
 
-```{r plot, include=TRUE}
-# Plotting all the iris data
-plot(iris, col = c("red", "blue", "#ddaa33")[iris$Species], 
-     pch = c(1, 2, 3)[iris$Species], cex = 0.8)
-```
-
-
 Depending on the data we are 
 attempting to visualize, the type of plot we may want to use will vary. R will automatically try and plot the most 
-appropriate plot for the data provided.
+appropriate plot for the data provided. Here we use a "~" to provide a formula denoting what we want to plot. As ```iris$Species``` is a factor,
+R defaults to a boxplot.
 
 ``` {r echo=T}
 plot(iris$Sepal.Length ~ iris$Species, ylab = "Sepal Length (cm)", xlab = "Species", 
      col =  c("red", "blue", "#ddaa33"))
 ```
 
-Box plots can be made using the ```boxplot()``` function. It uses a lot of the standard plotting functions.
-As well as the ```plot()``` function R has some sepcific plot functions (box plots (boxplot()), histograms (hist()) and bar plots (barplot()))
+Note here, we only need to provide a vetcor of three colours, as there are only three boxes in the figure. 
+
+As well as the ```plot()``` function R has some spcific plot functions (box plots (boxplot()), histograms (hist()) and bar plots (barplot())). They use a lot of the same arguments.
+
+For example we can recreate the same boxplot as follows
+
+``` {r echo=T}
+boxplot(iris$Sepal.Length ~ iris$Species, ylab = "Sepal Length (cm)", xlab = "Species", 
+     col =  c("red", "blue", "#ddaa33"))
+```
 
 Histograms are plotted using the function ```hist()```, which allows us to plot the frequency of a vector. You can use standard plotting arguments such as col, but also used the argument breaks to adjust the amount of bins.
 
@@ -114,12 +116,12 @@ knitr::kable(plots, col.names = gsub("[.]", " ", names(plots)))
 
 **Plots on plots**
 
-Once you have created a plot, there are various methods which allow us to add more data on top. For example, we may want to add a individual data points on top of a box plot, or extra points to a plot. To do this we can use functions such as points(), lines() or abline().
+Once you have created a, there are various methods which allow us to add more data on top. For example, we may want to add a individual data points on top of a box, or extra points to a plot. To do this we can use functions such as points(), lines() or abline().
 
 Using points() and lines(), you can add more data to your plot. They use similar arguments to plot(), such as col, lty, pch, cex etc.
 
 ``` {r echo=T}
-# Plot "Sepal.Length" on a plot, then add "Sepal.Width" data as points and "Petal.Length" as lines
+# Plot "Sepal.Length" on a, then add "Sepal.Width" data as points and "Petal.Length" as lines
 plot(iris$Sepal.Length, ylim = c(0, 8), ylab = "Size (cm)", xlab = "Sample")
 points(iris$Sepal.Width, col = "red", pch = 19, cex = 0.8)
 lines(iris$Petal.Length, lty = 2, col = "blue")
@@ -144,7 +146,7 @@ abline(lm(iris$Sepal.Length ~ iris$Petal.Length), lty = 3, col = "green", lwd = 
 We can make many additions to our plots. As there are so many, we will only explore the most common ones here but will list additional ones which may be useful in the future. 
 
 
-We often need to add a legend to our plot, and can do this using legend(). The legend() function allows us to define position, either by using x, y coordinates or position such as "topleft". We also provide the text, colours and background.
+We often need to add a legend to our, and can do this using legend(). The legend() function allows us to define position, either by using x, y coordinates or position such as "topleft". We also provide the text, colours and background.
 
 ``` {r echo=T}
 # Plotting "Sepal.Length" and colouring and using different points by "Species", then adding a legend
@@ -180,7 +182,7 @@ Additional functions to add to your plots are segments(), arrows(), curve(), rec
 
 **Margins ** 
 
-Using par(), mar() and mgp() before the plot, we can adjust the margins of our plot. Using mar() allows us to adjust the margins giving the number of lines of margin, with the default being c(5, 4, 4, 2) + 0.1 relating to bottom, left, top and right respectively. 
+Using par(), mar() and mgp() before the, we can adjust the margins of our plot. Using mar() allows us to adjust the margins giving the number of lines of margin, with the default being c(5, 4, 4, 2) + 0.1 relating to bottom, left, top and right respectively. 
 
 Using mgp() sets the axis label locations relative to the edge of the inner plot window. The first value represents the location the axis label, the 2nd the tick-mark labels, and 3rd the tick marks. The default is c(3, 1, 0).
 
