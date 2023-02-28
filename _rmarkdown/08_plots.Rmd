@@ -13,25 +13,88 @@ attrib_license: CC-BY 4.0
 attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 ---
 
-As R is often considered the go to language for both data analysis and visualisation. R is capable of plotting many 
-different types of plots and many are possible through simple plotting techniques. Depending on the data we are 
-attempting to visualize, the type of plot we may want to use will vary. R will automatically try and plot the most 
-appropriate plot for the data provided. You can also define to make box plots (boxplot()), histograms (hist()) and bar plots (barplot()).
+The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way 
+to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, 
+but we can explore a few of R’s plotting features. R is synonymous with data analysis and visualisation. R is capable of plotting many 
+different types of plots and importantly these are infinitely customisable. To mke a plot look the way we want,
+we need to take advantage of the many arguments available in plotting functions. 
 
-There are also many arguments we can give to R for the plots we want to make.
+The R base function ```plot()``` can generate a range of different plots from some user supplied data. 
+
+If we provide one vector of continous data, it plots that on the y-axis against the index on the x-axis.
+
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length)
+```
+
+If we want to plot a scatterplot between two continuous variables, we provide both to the function. The order here can be important, if not 
+explicitly labeled as the x or y variable, R will take the first entry as the x variable and the second entry as the y variable. 
+
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+Alternatively we can use the argument keywords to specify which variable should be plotted on which axis, in this case is doesn't matter which order we
+include the arguments. For example we can state the y variable first. 
+
+```{r plot, include=TRUE}
+plot(y = iris$Sepal.Length, x = iris$Sepal.Width)
+```
+
+You will see that R has generated the axis labels from the variable names. We can customise this with additional arguments (```xlab``` and ```ylab```) in the function.
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)")
+```
+
+We can also change the colour of the points with the ```col``` argument. If we give it one colour, all the points will be changed to the same colour.
+
+
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = "red")
+```
+
+Alternatively, we can provide a vector of colours, where the first colour will be the colour of the first point drawn, the second colour, the colour of the second point and so on. 
+This vector does have to be the same length as the number of points. For example if we provide a vector of three colours, this will recycled until all the points have been pointed. 
+
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = c("red", "blue", "#ddaa33"))
+```
+
+What has happened is the 1st,4th,7th etc are pointed in red, the 2nd,5th,8th etc in blue and the 3rd,6th,9th etc in #ddaa33.
+
+If we want to colour the points by some categorial variable, we can use the fact that factors are represented as integers to subset a vector of colours.
+
+```{r plot, include=TRUE}
+plot(iris$Sepal.Length, iris$Sepal.Width , xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", col = c("red", "blue", "#ddaa33")[iris$Species])
+```
+
+There are three levels in the factor ```iris$Species```, which are represent internal by the numbers 1,2,3. These integers can be used to index a vector of at 
+least three as shown below, and create a new vector, where each level is replaced by the same colour
+
+```{r plot, include=TRUE}
+iris$Species[1:10]
+as.numeric(iris$Species[1:10])
+c("red", "blue", "#ddaa33")[iris$Species[1:10]]
+```
 
 ```{r plot, include=TRUE}
 # Plotting all the iris data
-plot(iris, col = c("red", "blue", "#ddaa33")[as.numeric(iris$Species)], 
-     pch = c(1, 2, 3)[as.numeric(iris$Species)], cex = 0.8)
+plot(iris, col = c("red", "blue", "#ddaa33")[iris$Species], 
+     pch = c(1, 2, 3)[iris$Species], cex = 0.8)
 ```
 
-Box plots can be made using the ```boxplot()``` function. It uses a lot of the standard plotting functions.
+
+Depending on the data we are 
+attempting to visualize, the type of plot we may want to use will vary. R will automatically try and plot the most 
+appropriate plot for the data provided.
 
 ``` {r echo=T}
 plot(iris$Sepal.Length ~ iris$Species, ylab = "Sepal Length (cm)", xlab = "Species", 
      col =  c("red", "blue", "#ddaa33"))
 ```
+
+Box plots can be made using the ```boxplot()``` function. It uses a lot of the standard plotting functions.
+As well as the ```plot()``` function R has some sepcific plot functions (box plots (boxplot()), histograms (hist()) and bar plots (barplot()))
 
 Histograms are plotted using the function ```hist()```, which allows us to plot the frequency of a vector. You can use standard plotting arguments such as col, but also used the argument breaks to adjust the amount of bins.
 
