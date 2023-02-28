@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Loading Data
-order: 5
-session: 1
+title: Loading Data from Files
+order: 6
+session: 2
 length: 20
 toc: true
 adapted: true

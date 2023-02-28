@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Manipulating Datasets
-order: 6
+order: 7
 session: 2
 length: 20
 toc: true

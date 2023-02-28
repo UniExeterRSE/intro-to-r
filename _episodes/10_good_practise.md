@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Establishing Good Practices from the Start
-order: 9
-session: 1
+order: 10
+session: 3
 length: 20
 toc: true
 adapted: false
