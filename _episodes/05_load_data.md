@@ -42,7 +42,7 @@ read.csv(file = "worms.csv", header = TRUE)
 ## Error in file(file, "rt"): cannot open the connection
 {% endhighlight %}
 
-We have provided two arguments: 
+We have provided two arguments to this function: 
 1. __file__ - the name of the file we want to read,
 2. __header__ - whether the first line of the file contains names for the columns of data.
 
