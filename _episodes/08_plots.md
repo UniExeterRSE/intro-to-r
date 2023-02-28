@@ -155,7 +155,8 @@ boxplot(iris$Sepal.Length ~ iris$Species, ylab = "Sepal Length (cm)", xlab = "Sp
 
 ![plot of chunk unnamed-chunk-10](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-10-1.png)
 
-Histograms are plotted using the function ```hist()```, which allows us to plot the frequency of a vector. You can use standard plotting arguments such as col, but also used the argument breaks to adjust the amount of bins.
+Histograms are plotted using the function ```hist()```, which allows us to plot the frequency of a vector. You can use standard plotting arguments such as col, but also used the 
+argument breaks to adjust the amount of bins.
 
 
 {% highlight r %}
@@ -168,30 +169,38 @@ hist(iris$Sepal.Length, breaks = 16)
 Below you can see a table containing a lot of basic plotting arguments. Also, for colour selection, making colour themes and looking for colour blind options, you can use https://www.colorhexa.com/ which will give you R friendly colour codes.
 
 
-{% highlight text %}
-## Warning in file(file, "rt"): cannot open file 'plotting table.csv': No such
-## file or directory
-{% endhighlight %}
+|Argument   |Description                                                              |Example                      |
+|:----------|:------------------------------------------------------------------------|:----------------------------|
+|bg         |The color to be used for the background                                  |bg = "blue"                  |
+|cex        |Character size and expansion                                             |cex = 1.5, cex = 0.8         |
+|cex.axis   |The magnification to be used for axis annotation                         |cex.axis = 1.2               |
+|cex.lab    |he magnification to be used for x and y label                            |cex.lab = 0.8                |
+|cex.main   |The magnification to be used for main titles                             |cex.main = 1.3               |
+|cex.sub    |The magnification to be used for sub-titles                              |cex.sub = 0.9                |
+|col        |Colour                                                                   |col = "red", col = "#ff0000" |
+|family     |Font on the plot                                                         |family = "Arial"             |
+|fg         |The colour to be used for the foreground of plots                        |fg = "orange"                |
+|font       |An integer which specifies which font to use for text. Italic, bold etc. |font = 3                     |
+|font.axis  |The font to be used for axis annotation                                  |font.axis = 2                |
+|font.lab   |The font to be used for x and y labels                                   |font.lab = 3                 |
+|font.main  |The font to be used for plot main titles                                 |font.main = 2                |
+|font.sub   |The font to be used for plot sub-titles                                  |font.sub = 2                 |
+|lty        |Line type                                                                |lty = 2                      |
+|lwd        |Line width                                                               |lwd = 3                      |
+|main       |Plot primary title                                                       |main = "Iris"                |
+|pch        |Scatter plot symbol for points                                           |pch = 1, pch= "p"            |
+|srt        |The string rotation in degrees                                           |srt = 90                     |
+|sub        |Subtitle of plot                                                         |sub = "All data"             |
+|xlab, ylab |Label of the x or y axis                                                 |xlab = "Distance (Miles)"    |
+|xlim, ylim |Min/max x or y axis values                                               |xlim = c(0, 10)              |
+|xpd        |If true, allows plotting outside the plot                                |xpd = TRUE                   |
 
 
-
-{% highlight text %}
-## Error in file(file, "rt"): cannot open the connection
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in knitr::kable(plots, col.names = gsub("[.]", " ", names(plots))): object 'plots' not found
-{% endhighlight %}
-
-***
-
-**Plots on plots**
+# Plots on plots
 
 Once you have created a, there are various methods which allow us to add more data on top. For example, we may want to add a individual data points on top of a box, or extra points to a plot. To do this we can use functions such as points(), lines() or abline().
 
-Using points() and lines(), you can add more data to your plot. They use similar arguments to plot(), such as col, lty, pch, cex etc.
+Using ```points()``` and ```lines()```, you can add more data to your plot. They use similar arguments to ```plot()```, such as col, lty, pch, cex etc.
 
 
 {% highlight r %}
@@ -203,7 +212,10 @@ lines(iris$Petal.Length, lty = 2, col = "blue")
 
 ![plot of chunk unnamed-chunk-13](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-13-1.png)
 
-using abline(), you can add horizontal lines (h=), vertical lines (v=), diagonal or correlations (x, y). It can also be wrapped around a linear regression (lm()) to add a line of best fit.
+using ```abline()```, you can add horizontal lines (```h=```), vertical lines (```v=```), or diagonal lines(x, y). You can also specify
+ the parameters of the straight line i.e the intercept (```a=```) and slope coefficient (```b=```).
+
+It can also be wrapped around a linear regression (```lm()```) to add a line of best fit.
 
 
 {% highlight r %}
@@ -223,29 +235,31 @@ abline(lm(iris$Sepal.Length ~ iris$Petal.Length), lty = 3, col = "green", lwd = 
 
 ![plot of chunk unnamed-chunk-14](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-14-2.png)
 
-***
 
-**Plot additions**
+# Adding to a Plot
 
 We can make many additions to our plots. As there are so many, we will only explore the most common ones here but will list additional ones which may be useful in the future. 
 
 
-We often need to add a legend to our, and can do this using legend(). The legend() function allows us to define position, either by using x, y coordinates or position such as "topleft". We also provide the text, colours and background.
+We often need to add a legend to our, and can do this using ```legend()```. The ```legend()``` function allows us to define position, either by using x, y coordinates or by a word
+ such as "topleft". We also provide the text, colours and background.
 
 
 {% highlight r %}
 # Plotting "Sepal.Length" and colouring and using different points by "Species", then adding a legend
-plot(iris$Sepal.Length, col = c("red", "blue", "#ddaa33")[as.numeric(iris$Species)], 
-     pch = c(1, 2, 3)[as.numeric(iris$Species)])
+plot(iris$Sepal.Length, col = c("red", "blue", "#ddaa33")[iris$Species], 
+     pch = c(1, 2, 3)[iris$Species])
 legend("topleft", legend = c("Setosa", "Versicolor", "Virginica"), 
        pch = c(1,2,3), col = c("red", "blue", "#ddaa33"))
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-15](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-15-1.png)
 
-We can add additional text to a plot by using text() or mtext() for putting text in the margin. To use text(), we provide x, y coordinates, the text to be written (labels =), size (cex =), and colour (col =) and font (font =). 
+We can add additional text to a plot by using ```text()``` or ```mtext()``` for putting text in the margin. To use ```text()```, we provide x, y coordinates, 
+the text to be written (```labels =```), size (```cex =```), and colour (```col =```) and font (```font =```). 
 
-Using mtext() requires different arguments as it is relation to the margin side we put the text in. It requires the text (text = ), the side of the plot the text will go (side =) with 1 = bottom, 2 = left, 3 = top, 4 = right, the margin line to put the text on (line = ).
+Using ```mtext()``` requires different arguments as it is relation to the margin side we put the text in. It requires the text (```text = ```), the side of the plot 
+the text will go (side =) with 1 = bottom, 2 = left, 3 = top, 4 = right, the margin line to put the text on (line = ).
 
 
 {% highlight r %}
@@ -257,7 +271,7 @@ mtext("text", side = 4, line = 1, col = "red")
 
 ![plot of chunk unnamed-chunk-16](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-16-1.png)
 
-There are incidences when we may want to add additional axes or move and adjust the axes of a plot. For this, we use axis(), and may add the argument to plot() to remove axes from our plot (axes = F) so we can draw them. Arguments for axis() are which side you want the axis (side =) using 1 = below, 2 = left, 3 = above and 4 = right, the point at which tick-marks are drawn (at =), what the labels are (labels =), how far from the axis the ticks should extend (line =), the position of the axis (pos =) and if tick marks should be drawn (tick =). You can also change the line width (lwd =), colour (col =) and type of line (lty =).
+There are incidences when we may want to add additional axes or move and adjust the axes of a plot. For this, we use ```axis()```, and may add the argument to ```plot()``` to remove axes from our plot (axes = F) so we can draw them. Arguments for axis() are which side you want the axis (side =) using 1 = below, 2 = left, 3 = above and 4 = right, the point at which tick-marks are drawn (at =), what the labels are (labels =), how far from the axis the ticks should extend (line =), the position of the axis (pos =) and if tick marks should be drawn (tick =). You can also change the line width (lwd =), colour (col =) and type of line (lty =).
 
 
 {% highlight r %}
@@ -269,11 +283,9 @@ axis(2, pos = 50, at = 1:8, lwd = 2, col = "blue")
 
 ![plot of chunk unnamed-chunk-17](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-17-1.png)
 
-Additional functions to add to your plots are segments(), arrows(), curve(), rect(), polygon() and grid().
+Additional functions to add to your plots are ```segments()```, ```arrows()```, ```curve()```, ```rect()```, ```polygon()``` and ```grid()```.
 
-***
-
-**Margins ** 
+# Plotting Margins 
 
 Using par(), mar() and mgp() before the, we can adjust the margins of our plot. Using mar() allows us to adjust the margins giving the number of lines of margin, with the default being c(5, 4, 4, 2) + 0.1 relating to bottom, left, top and right respectively. 
 
@@ -289,9 +301,7 @@ plot(iris$Sepal.Length, ylab="Sepal Length (cm)")
 
 ![plot of chunk unnamed-chunk-18](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-18-1.png)
 
-***
-
-**Composites **
+# Creating Composite Plots
 
 There are two options for making composite plots, or plots with multiple plots as panels. These are par(mfrow/mfcol =) and layout().
 
@@ -320,9 +330,7 @@ plot(iris$Petal.Length, ylab = "Petal Length (cm)")
 
 ![plot of chunk unnamed-chunk-20](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/unnamed-chunk-20-1.png)
 
-***
-
-**Saving and exporting plot**
+# Saving and Exporting Plots
 
 We can save our plots as various formats using the appropriate function. These include pdf (pdf()), jpeg (jpeg()), png (png()) and tiff (tiff()). These functions, with their arguments, will appear before the plot information, and will be succeeded by dev.off(). The first argument for any of these functions should be the path and file name to save the file under. You can also define the size of the image (width =, height =, units =), background colour (bg =) and resolution (res =).  
 
@@ -341,9 +349,7 @@ dev.off()
 ##   2
 {% endhighlight %}
 
-***
-
-### <a id="tasks3"></a>Tasks
+Activity: 
 
 1. Make two objects, one object containing values 1-20, and another object containing values 40-21
     a. Using your objects, create a plot with the object containing 1:20 on the x-axis and the object containing 40-21 on y-axis
@@ -354,7 +360,7 @@ dev.off()
     f. Add a horizontal line at 30, choose a colour, weight and style
     g. Add a vertical line at 10, choose a different colour, weight and style
     h. Add text saying "Cross Point" to the top right of the intersection of the two lines. Adjust the colour and size
-<p>&nbsp;</p>
+
 
 2. Using "iris", create a scatter plot with "Sepal.Length" on x-axis, labelled "Sepal length (cm)", and the other three variables plotted on y-axis, with the label being "Size (cm)"
     a. Colour the three species differently and make the three measures different style of points 
@@ -362,7 +368,7 @@ dev.off()
     c. Make sure the x-axis limits are 0-8 and y-axis limit is 4-8
     d. Adjust the margins to give a larger space around the edge of the plot and move the axis labels a little away from the axes
     e. Export the image as a pdf
-<p>&nbsp;</p>
+
 
 3. Create a composite plot with the following panels using "iris". Make the plots colourful and variable, that all points are visible in plotting window, axes have labels and measurement units. Export the plot as a high resolution (200) jpeg. Make sure the points and text are readable, and all info is visible. You may need to adjust margins
     a. Box plot of "Petal.Length" by species coloured by species
