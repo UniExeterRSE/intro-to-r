@@ -27,7 +27,7 @@ plot(iris, col = c("red", "blue", "#ddaa33")[as.numeric(iris$Species)],
      pch = c(1, 2, 3)[as.numeric(iris$Species)], cex = 0.8)
 {% endhighlight %}
 
-![plot of chunk plot](https://github.com/UniExeterRSE/intro-to-r/blob/main/figure/rmarkdown/08_plots/plot-1.png)
+![https://github.com/UniExeterRSE/intro-to-r/blob/main/figure/rmarkdown/08_plots/plot-1.png](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/08_plots/plot-1.png)
 
 Box plots can be made using the ```boxplot()``` function. It uses a lot of the standard plotting functions.
 
