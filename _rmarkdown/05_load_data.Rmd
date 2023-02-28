@@ -30,7 +30,7 @@ Assuming you have downloaded the file into your current working directory, you c
 read.csv(file = "worms.csv", header = TRUE)
 ```
 
-We have provided two arguments: 
+We have provided two arguments to this function: 
 1. __file__ - the name of the file we want to read,
 2. __header__ - whether the first line of the file contains names for the columns of data.
 
