@@ -29,7 +29,7 @@ data()
 
 This command won't produce any output but open a file in the scripts pane that lists the available datasets.
 
-[ALt text!]("../images/r_data.png")
+(Alt text!)["../images/r_data.png"]
 
 In this session, we will be using the built-in R data sets stored in the variables ```iris``` & ```mtcars```. 
 By having our data stored in a variable means we can easy use it with R commands meaning we can start to
