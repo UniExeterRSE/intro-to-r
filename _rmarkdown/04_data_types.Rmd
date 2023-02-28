@@ -32,8 +32,8 @@ This command won't produce any output but open a file in the scripts pane that l
 (Alt text!)["../images/r_data.png"]
 
 In this session, we will be using the built-in R data sets stored in the variables ```iris``` & ```mtcars```. 
-By having our data stored in a variable means we can easy use it with R commands meaning we can start to
-manipulate or process it. Note that we are using the word data, very loosely, it can refer to any form of 
+By having our data stored in a variable means we can easily use it with R functions and start to
+manipulate or process it. Note that we are using the word data very loosely, it can refer to any form of 
 information we want to store.
 
 # Exploring datasets
