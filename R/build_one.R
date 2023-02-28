@@ -1,7 +1,7 @@
 local({
   # fall back on "/" if baseurl is not specified
   baseurl = blogdown:::get_config2("baseurl", default = "/")
-  knitr::opts_knit$set(base.url = baseurl)
+  knitr::opts_knit$set(base.url = "https://github.com/UniExeterRSE/intro-to-r/")
   knitr::render_jekyll()  # set output hooks
 
   # input/output filenames as two arguments to Rscript
