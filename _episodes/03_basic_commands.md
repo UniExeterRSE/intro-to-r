@@ -133,8 +133,7 @@ getwd()
 ## [1] "/home/runner/work/intro-to-r/intro-to-r/_rmarkdown"
 {% endhighlight %}
 
-
-
+<br>
 <details>
 	<summary> Absolute vs Relative Filepaths </summary>
 	<pre>
@@ -149,7 +148,7 @@ folder we can just provide the name of the current folder. We can use shortcuts 
 </p>
 </pre>
 </details>
-
+<br>
 
 # Defining Variables
 
