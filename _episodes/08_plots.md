@@ -27,7 +27,7 @@ plot(iris, col = c("red", "blue", "#ddaa33")[as.numeric(iris$Species)],
      pch = c(1, 2, 3)[as.numeric(iris$Species)], cex = 0.8)
 {% endhighlight %}
 
-![plot of chunk plot](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/plot-1.png)
+![plot of chunk plot](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/plot-1.png)
 
 Box plots can be made using the ```boxplot()``` function. It uses a lot of the standard plotting functions.
 
@@ -37,7 +37,7 @@ plot(iris$Sepal.Length ~ iris$Species, ylab = "Sepal Length (cm)", xlab = "Speci
      col =  c("red", "blue", "#ddaa33"))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-1](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-1](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-1-1.png)
 
 Histograms are plotted using the function ```hist()```, which allows us to plot the frequency of a vector. You can use standard plotting arguments such as col, but also used the argument breaks to adjust the amount of bins.
 
@@ -47,7 +47,7 @@ Histograms are plotted using the function ```hist()```, which allows us to plot 
 hist(iris$Sepal.Length, breaks = 16)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-2](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-2-1.png)
 
 Below you can see a table containing a lot of basic plotting arguments. Also, for colour selection, making colour themes and looking for colour blind options, you can use https://www.colorhexa.com/ which will give you R friendly colour codes.
 
@@ -85,7 +85,7 @@ points(iris$Sepal.Width, col = "red", pch = 19, cex = 0.8)
 lines(iris$Petal.Length, lty = 2, col = "blue")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-4](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-4-1.png)
 
 using abline(), you can add horizontal lines (h=), vertical lines (v=), diagonal or correlations (x, y). It can also be wrapped around a linear regression (lm()) to add a line of best fit.
 
@@ -97,7 +97,7 @@ abline(h = 6, col = "red")
 abline(v = 60, col = "blue")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-5-1.png)
 
 {% highlight r %}
 # Plotting "Sepal.Length" against "Petal.Length" and adding a line of best fit
@@ -105,7 +105,7 @@ plot(iris$Sepal.Length ~ iris$Petal.Length)
 abline(lm(iris$Sepal.Length ~ iris$Petal.Length), lty = 3, col = "green", lwd = 3)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-5-2.png)
+![plot of chunk unnamed-chunk-5](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-5-2.png)
 
 ***
 
@@ -125,7 +125,7 @@ legend("topleft", legend = c("Setosa", "Versicolor", "Virginica"),
        pch = c(1,2,3), col = c("red", "blue", "#ddaa33"))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-6-1.png)
 
 We can add additional text to a plot by using text() or mtext() for putting text in the margin. To use text(), we provide x, y coordinates, the text to be written (labels =), size (cex =), and colour (col =) and font (font =). 
 
@@ -139,7 +139,7 @@ text(20, 6, "text", cex = 0.7, col = "blue", font = 2)
 mtext("text", side = 4, line = 1, col = "red")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-7](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-7-1.png)
 
 There are incidences when we may want to add additional axes or move and adjust the axes of a plot. For this, we use axis(), and may add the argument to plot() to remove axes from our plot (axes = F) so we can draw them. Arguments for axis() are which side you want the axis (side =) using 1 = below, 2 = left, 3 = above and 4 = right, the point at which tick-marks are drawn (at =), what the labels are (labels =), how far from the axis the ticks should extend (line =), the position of the axis (pos =) and if tick marks should be drawn (tick =). You can also change the line width (lwd =), colour (col =) and type of line (lty =).
 
@@ -151,7 +151,7 @@ axis(1)
 axis(2, pos = 50, at = 1:8, lwd = 2, col = "blue")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-8-1.png)
 
 Additional functions to add to your plots are segments(), arrows(), curve(), rect(), polygon() and grid().
 
@@ -171,7 +171,7 @@ par(mar = c(4, 4, 2, 1), mgp = c(2, 0.5, 0), las = 1)
 plot(iris$Sepal.Length, ylab="Sepal Length (cm)")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-9](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-9-1.png)
 
 ***
 
@@ -189,7 +189,7 @@ plot(iris$Sepal.Length, ylab="Sepal Length (cm)")
 plot(iris$Sepal.Width, ylab="Sepal Width (cm)")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-10](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-10](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-10-1.png)
 
 The arguments for layout() are more complicated but allows for unequal sizes of composite sections. The matrix argument allows you to define what plots (in the order of plotting under the layout function). The following two numbers are the number of rows and columns in our composite, respectively. The byrow argument, if true, will add plots by row, if false, it will add by column.
 
@@ -202,7 +202,7 @@ plot(iris$Sepal.Width, ylab = "Sepal Width (cm)")
 plot(iris$Petal.Length, ylab = "Petal Length (cm)")
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-11](https://github.com/UniExeterRSE/intro-to-r/../figure/rmarkdown/08_plots/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](https://github.com/UniExeterRSE/intro-to-r/figure/rmarkdown/08_plots/unnamed-chunk-11-1.png)
 
 ***
 
