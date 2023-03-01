@@ -42,7 +42,7 @@ A *Mirror* is a server somewhere in the world with a copy of the program. Choose
 
 <br><br>
 
-![Alt Text](../images/gif_windows.gif)
+![Alt Text](images/gif_windows.gif)
 
 
 ## How to Install RStudio?
@@ -67,7 +67,7 @@ b. Click on the free version **Download** button
 
 <br>
 
-![Alt Text](../images/rstudio_windows.gif)
+![Alt Text](images/rstudio_windows.gif)
 
 <br>
 
