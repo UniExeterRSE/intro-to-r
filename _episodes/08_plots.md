@@ -433,25 +433,25 @@ dev.off()
 ## Activity: 
 
 1. Make two objects, one object containing values 1-20, and another object containing values 40-21
-    a. Using your objects, create a plot with the object containing 1:20 on the x-axis and the object containing 40-21 on y-axis
-    b. Change the x-axis label to "Independent Variable" and y-axis label to "Dependent Variable"
-    c. Expand both axes to show values 1-40
-    d. Increase the data point size, change their style and make them repeat between five colours
-    e. Add a legend top the top right of the plot showing the five colours you have chosen and labelling them A, B, C, D, and E
-    f. Add a horizontal line at 30, choose a colour, weight and style
-    g. Add a vertical line at 10, choose a different colour, weight and style
-    h. Add text saying "Cross Point" to the top right of the intersection of the two lines. Adjust the colour and size
+    * Using your objects, create a plot with the object containing 1:20 on the x-axis and the object containing 40-21 on y-axis
+    * Change the x-axis label to "Independent Variable" and y-axis label to "Dependent Variable"
+    * Expand both axes to show values 1-40
+    * Increase the data point size, change their style and make them repeat between five colours
+    * Add a legend top the top right of the plot showing the five colours you have chosen and labelling them A, B, C, D, and E
+    * Add a horizontal line at 30, choose a colour, weight and style
+    * Add a vertical line at 10, choose a different colour, weight and style
+    * Add text saying "Cross Point" to the top right of the intersection of the two lines. Adjust the colour and size
 
 
 2. Using "iris", create a scatter plot with "Sepal.Length" on x-axis, labelled "Sepal length (cm)", and the other three variables plotted on y-axis, with the label being "Size (cm)"
-    a. Colour the three species differently and make the three measures different style of points 
-    b. Add a legend to show all the groups, and make sure it doesn't cover any points
-    c. Make sure the x-axis limits are 0-8 and y-axis limit is 4-8
-    d. Adjust the margins to give a larger space around the edge of the plot and move the axis labels a little away from the axes
-    e. Export the image as a pdf
+    * Colour the three species differently and make the three measures different style of points 
+    * Add a legend to show all the groups, and make sure it doesn't cover any points
+    * Make sure the x-axis limits are 0-8 and y-axis limit is 4-8
+    * Adjust the margins to give a larger space around the edge of the plot and move the axis labels a little away from the axes
+    * Export the image as a pdf
 
 
 3. Create a composite plot with the following panels using "iris". Make the plots colourful and variable, that all points are visible in plotting window, axes have labels and measurement units. Export the plot as a high resolution (200) jpeg. Make sure the points and text are readable, and all info is visible. You may need to adjust margins
-    a. Box plot of "Petal.Length" by species coloured by species
-    b. Histogram of "Petal.Length" with 6 breaks, each one coloured differently, with a line added for the mean (hint: mean), coloured and labelled "Mean = X" where "X" is the mean value. Make this panel take more space
-    c. "Petal.Length" against "Petal.Width" for just "virginica" species, with a line of best fit (hint: subsetting)
+    * Box plot of "Petal.Length" by species coloured by species
+    * Histogram of "Petal.Length" with 6 breaks, each one coloured differently, with a line added for the mean (hint: mean), coloured and labelled "Mean = X" where "X" is the mean value. Make this panel take more space
+    * "Petal.Length" against "Petal.Width" for just "virginica" species, with a line of best fit (hint: subsetting)
