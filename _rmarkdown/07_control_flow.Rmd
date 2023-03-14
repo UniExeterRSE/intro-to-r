@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Control Flow 
-order: 5
+order: 7
 session: 2
 length: 20
 toc: true

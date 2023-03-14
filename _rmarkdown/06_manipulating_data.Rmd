@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Manipulating Datasets
-order: 7
-session: 2
+order: 6
+session: 1
 length: 20
 toc: true
 adapted: false
@@ -124,9 +124,9 @@ Create two objects, one containing numbers 1-10, one containing numbers 11-20
 # Paste
 
 The function ```paste()``` is a way to concatenating together vectors. It can be applied to a characters or numbers, 
-vector and column(s) of a data frame or matrix. You can define what you want the separator is (sep =), or use 
-```paste0()``` or ```paste()``` with the srgument sep = "" for no space. You can also give text to add to a 
-character or vector.
+vector and column(s) of a data frame or matrix. You can define what you want the separator to be (sep =), or use 
+```paste0()``` or ```paste()``` with the argument sep = "" for no space. You can also prodvide a string as an argument
+to add the same component to a character or vector.
 
 ``` {r echo=T}
 # Adding text to a value in iris
@@ -171,7 +171,7 @@ iris2$new.column <- NULL
 ```
 
 
-# Generateing a sequence of numbers
+# Generating a sequence of numbers
 
 To generate regular sequences, we can use ```seq()```. We provide it a value to start from (from =), and where to 
 end (to =) abd then a value to increase by (by =).
@@ -186,7 +186,7 @@ seq(from = 0, to = 100, by = 5)
 ## Activity
 
 Create a copy of "iris"
-    * Rename the columns of "iris" by prefixing with the word "flower" and the separator "_"
-    * In your copy, duplicate the "Species" column
-    *Add a column to your copy which contains numbers between 4 and 600 increased by 4 each time
+    * Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
+    * In your copy, duplicate the ```Species``` column
+    * Add a column to your copy which contains the numbers from 4 to 600 increasing by 4 each time
 

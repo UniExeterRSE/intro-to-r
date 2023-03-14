@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Loading Data from Files
-order: 6
-session: 2
+order: 5
+session: 1
 length: 20
 toc: true
 adapted: true
@@ -14,7 +14,9 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 ---
 
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 More often than not you will need to load data from a file into R that you want to analyse. We are going to use a 
 dataset in the file [worms.csv]("../data/worms.csv") which you can download from the course webpage. 
@@ -24,23 +26,9 @@ We need to tell our computer where is the file that contains the values - if we 
 
 Assuming you have downloaded the file into your current working directory, you can execute the following
 
-
-{% highlight r %}
+```{r, results="hide"}
 read.csv(file = "worms.csv", header = TRUE)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Warning in file(file, "rt"): cannot open file 'worms.csv': No such file or
-## directory
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in file(file, "rt"): cannot open the connection
-{% endhighlight %}
+```
 
 We have provided two arguments to this function: 
 1. __file__ - the name of the file we want to read,
@@ -56,12 +44,13 @@ Try it out.
 `read.csv` reads the file, but we can't easily use data unless we assign it to a variable. Let's re-run `read.csv` and 
 save the result:
 
-
-{% highlight r %}
+```{r, eval = FALSE}
 df <- read.csv(file = "worms.csv", header = TRUE)
-{% endhighlight %}
+```
 
-
+```{r, echo = FALSE}
+df <- read.csv(file = "../data/worms.csv", header = TRUE)
+```
 
 Use some of the functions we have introduced earlier can be used to summarise the properties of the worms dataset
 
