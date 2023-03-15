@@ -484,8 +484,9 @@ iris.double[1, ]
 ## Activity 
 
 Create two objects, one containing numbers 1-10, one containing numbers 11-20
-    * Bind them together to make an object of two rows, row 1 being 1:10, row 2 being 11-20
-    * Bind them together to make an object of two columns, columns 1 being 11-20, column 2 being 1-10
+
+* Bind them together to make an object of two rows, row 1 being 1:10, row 2 being 11-20
+* Bind them together to make an object of two columns, columns 1 being 11-20, column 2 being 1-10
 
 
 # Paste
@@ -612,7 +613,8 @@ seq(from = 0, to = 100, by = 5)
 ## Activity
 
 Create a copy of "iris"
-    * Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
-    * In your copy, duplicate the ```Species``` column
-    * Add a column to your copy which contains the numbers from 4 to 600 increasing by 4 each time
+
+* Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
+* In your copy, duplicate the ```Species``` column
+* Add a column to your copy which contains the numbers from 4 to 600 increasing by 4 each time
 
