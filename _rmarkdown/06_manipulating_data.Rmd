@@ -188,7 +188,7 @@ seq(from = 0, to = 100, by = 5)
 
 Create a copy of "iris"
 
-    * Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
-    * In your copy, duplicate the ```Species``` column
-    * Add a column to your copy which contains the numbers from 4 to 600 increasing by 4 each time
+* Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
+* In your copy, duplicate the ```Species``` column
+* Add a column to your copy which contains the numbers from 4 to 600 increasing by 4 each time
 
