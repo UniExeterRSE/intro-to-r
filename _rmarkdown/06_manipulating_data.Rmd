@@ -186,7 +186,7 @@ seq(from = 0, to = 100, by = 5)
 
 ## Activity
 
-Create a copy of "iris"
+Create a copy of ```iris```
 
 * Rename the columns of ```iris``` by prefixing with the word "flower" and the separator "_"
 * In your copy, duplicate the ```Species``` column
