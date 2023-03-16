@@ -42,7 +42,7 @@ Take a look at the column heads.
 head(bp_dataset)
 ```
 
-Let's find out how many rows (observations) and variables (columns) are in this dataset using the 'dim' command (for dimensions).
+Let's find out how many rows (observations) and variables (columns) are in this dataset using the ```dim``` command (for dimensions).
 
 ```{r}
 dim(bp_dataset)
@@ -54,12 +54,10 @@ dim(bp_dataset)
 	<pre>
 		
 When it comes to programming how you organise/store your data becomes important to facilitate efficient processing. This is beyond the
-remit of this course - but you can find out more about the principles of ["tidy" data](https://r4ds.had.co.nz/tidy-data.html).
+remit of this course - but you can find out more about the principles of [tidy data here](https://r4ds.had.co.nz/tidy-data.html).
 
     </pre>
 </details>
-
-
 
 We also want to check the types of variable in the dataframe. The 'str' command allows us to check the structure of the dataframe and tells us 
 about the types of variables in our dataset.
@@ -72,8 +70,7 @@ In this dataset we have both integer and character variables. Gender is provided
 (for female) and 1 (for male). This is not nessecary, if it was coded as a factor with the levels "Female" and "Male" R would be happy to use in the 
 statistical functions. Coding it in this way however, is more aligned with how it is used in statistics, and may make interpetation easier. 
 
-The variable `intervention` is a character variable, but could be an integer coded, for example, as Control=0, Drug A=1, 
- Drug B=2.
+The variable `intervention` is a character variable.
 
 
 # Summary statistics
@@ -110,7 +107,20 @@ sum(age)
 
 *Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
 
-We can also caluclate multiple a descriptive summary statistics of a numeric varible using the function ```summary()```
+We can also calculate percentiles. Using the ```quantile()``` command we need to specify which quantiles ( as proportions) that we want to calculate,
+where the 0.5 quantile would represent the median.
+
+```{r}
+quantile(age, probs = c(.25, .5, .75))
+```
+
+To get the inter-quartile range (75th percentile minus 25th percentile) we can do this with the ```IQR()``` function.
+
+```{r}
+IQR(age)
+```
+
+We can also calculate multiple descriptive summary statistics of a numeric variable simultaneously using the function ```summary()```.
 
 ```{r}
 summary(age)
@@ -118,7 +128,7 @@ summary(age)
 
 ## Activity
 
-Find the means, medians and range for `bp_baseline` and `bp_3m`.
+Find the means, medians and range for the variable ```bp_baseline``` and ```bp_3m```.
 
 # Summary statistics by groups
 
@@ -133,7 +143,8 @@ command requires 3  arguments :
 tapply(age, male, mean)
 ```
 
-We can also calculate the mean for a sub group, by subsetting it. For example to calucate the mean of just the means (i.e where male==1). 
+If we want to calculate a summary statistics for a sub group, by subsetting it and providing the subset to the ```mean()``` function. For example 
+to calucate the mean of just the means (i.e where male==1). 
 Note the use of ```==``` for specifiying an equality condition.
 
 
@@ -148,83 +159,68 @@ We can use the ```tapply()``` function to calculate the medians for the interven
 tapply(age, intervention, median)
 ```
 
-We can also do more complicated subgroups, for example cross 
-Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
+If we want to calculate summary statistics for combinations of groups for example by sex and intervention group, we can use the ```aggregate()```
+ command. We use the formula method to specify which variables we want summarise (on the left hand side of the ~) and which we want to group by
+ (on the right hand side of the ~).  If all the variables are included in
+ single data.frame, we can construct the formula using just the column names, and include the argument ```data``` to specify which object these are found
+ in. The ```FUN``` argument specfies which function you want to apply to these data, which is the mean in this example. 
+ Note that we need to include the dataset as an argument, even though we have attached ```bp_dataset```.
 
 
 ```{r}
 aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
 ```
 
-<br>
-
-
-<br>
-
-We can also calculate percentiles. Using the 'quantile' command we can set the quantiles that we wish to find. Note that the 0.5 quantile is the median.
-
 ```{r}
-quantile(age, probs = c(.25, .5, .75))
+aggregate(age, bp_baseline ~ male + intervention, data=bp_dataset, FUN=mean)
 ```
 
-To get the inter-quartile range (75th percentile minus 25th percentile):
+## Activity
 
-```{r}
-IQR(age)
-```
+Calculate the mean, SD, median, 10th and 90th percentiles for `bp_baseline` for each intervention group. 
+Also calculate the 25th centile, 50th centile (median) and 75th centile for `age`, for each combination of sex and intervention group. 
 
-<br>
 
-#### Task 2
+# Summary statistics for categorical data
 
-Calculate the mean, SD, median, 10th and 90th percentiles for `bp_baseline` for each intervention group. Also calculate the 25th centile, 50th centile (median) and 75th centile for `age`, by each combination of sex and intervention group. The aggregate command will be needed for this task: note that we need to include the dataset as a function, even though we have attached `bp_dataset`.
-
-<br>
-
-We can create a frequency table for categorical variables using the 'table' command.
+We can create a frequency table for categorical variables using the ```table()``` command.
 
 ```{r}
 table(male)
 ```
 
-If we also wish to calculate proportions or percentages, we can use the 'prop.table' command. We first need to create the table and then pass to 'prop.table'.
+We can also produce cross-tabulations for two categorical variables. In fact we can produce tables for more than 2 categorical variables. 
+
+```{r}
+table(male, intervention)
+```
+
+
+If we also wish to calculate proportions or percentages, we can use the ```prop.table()``` command. We first need to create the 
+table and then pass to ```prop.table()```. Youcan either do this in two stages:
 
 ```{r}
 table.male<-table(male)
 prop.table(table.male)
 ```
 
-We can also create a table for a subgroup of the data. For example: table by sex for people aged over 50.
+Or as a nested function call:
+
+```{r}
+prop.table(table(male, intervention))
+```
+
+We can also create a table for a subgroup of the data by providing just a subset of the data to the ```table()``` function.
+ For example to count the number of each sex, only for people aged over 50:
 
 ```{r}
 table(male[age>50])
 ```
 
-We can also produce a table of proportions.
 
-```{r}
-table.male.over50<-table(male[age>49])
-prop.table(table.male.over50)
-```
+## Activity 
+Create table of frequencies and a table of percentages for each intervention group.
 
-We can also produce cross-tabulations for two categorical variables.
-
-```{r}
-table(male, intervention)
-table.male.intervention<-table(male, intervention)
-prop.table(table.male.intervention)
-```
-
-<br>
-
-
-#### Task 3
-Create table of frequencies and a table of percentages by intervention group.
-
-<br>
-
-#### Task 4 
-Create table of frequencies and a table of percentages by intervention group for people whose baseline blood pressure is greater than or equal to 180.
-
-***
+Create table of frequencies and a table of percentages for intervention group stratified by whether their baseline blood pressure is 
+greater than or equal to 180.
 
