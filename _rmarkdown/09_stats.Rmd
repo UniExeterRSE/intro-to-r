@@ -13,20 +13,26 @@ attrib_license: CC-BY 4.0
 attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 ---
 
+
+```{r, echo = FALSE}
+bp_dataset <- read.csv(file = "../data/bp_dataset_session4.csv", header = TRUE)
+```
+
+
 R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R.
 
 # Loading the dataset
 
-To do statistics we need some observed data. We will use a dataset contained in the csv file [bp_dataset.csv]("../data/bp_dataset_session4.csv"). This dataset is based on a clinical trial to test the effect of two 
+To do statistics we need some observed data. We will use a dataset contained in the csv file [bp_dataset.csv](../data/bp_dataset_session4.csv). This dataset is based on a clinical trial to test the effect of two 
 drugs (Drug A and Drug B), compared with an inactive control drug (placebo), on blood pressure in people who have high blood pressure. The purpose of the 
 drugs is to reduce blood pressure. Some additional information about the people in the trial, such as their age and sex, is also provided (see 
-[codebook]("../data/bp_dataset_codebook_session4.xlsx") for further information about the variables).
+[codebook](../data/bp_dataset_codebook_session4.xlsx) for further information about the variables).
 
 Let's start by loading the dataset. You need to ensure that the dataset is located in your current working directory. 
 We will read in the csv file and assign it to a variable called ```bp_dataset```. The ```header=TRUE``` argument means R will take the entries in the first row 
  and use these to set the column headings. 
 
-```{r}
+```{r, eval = FALSE}
 bp_dataset<-read.csv(file="bp_dataset_session4.csv", header=TRUE)
 ```
 
@@ -72,62 +78,25 @@ The variable `intervention` is a character variable, but could be an integer cod
 
 # Summary statistics
 
-In this dataset, there are 4 numeric variables. These are ```age```, and blood pressure measured at three timepoints (```bp_baseline```, ```bp_3m```, ```bp_6m```).
+In this dataset, there are 4 numeric variables. These are ```age```, and blood pressure measured at three timepoints (```bp_baseline```, 
+```bp_3m```, ```bp_6m```).
 
-We want to find the mean, median, standard deviation and variance for these variables. Let's start with the mean. To find the mean for `age` we can use:
+We want to find the mean, median, standard deviation and variance for these variables. Let's start with the mean. To find the mean for ```age``` we can use:
 
 ```{r}
 mean(bp_dataset$age)
 ```
 
-We can attach the dataframe `bp_dataset`, so we don't need to use the $ notation for each command. Remember to use the 'detach' command when you wish to detach the dataframe.
+We can attach the dataframe ```bp_dataset```, so we don't need to use the ```$``` notation for each command. Remember to use the ```detach()``` 
+command when you wish to detach the dataframe.
 
 ```{r}
 attach(bp_dataset)
 mean(age)
 ```
-<br>
 
-#### Task 1
-Find the means for `bp_baseline` and `bp_3m`.
+We can also calculate the median, standard deviation, variance, minimum, maximum, range and sum fairly easily using base R functions. 
 
-<br>
-
-We can summarise for different subsets of the data by using R command 'tapply'. The 'tapply' command takes 3 arguments in the below command:
-
- + `age`: numeric variable for which we wish to calculate the mean
- + `male`: variable indicating the subgroups, in this case 0 and 1
- + mean: the statistic we wish to calculate
-
-```{r}
-tapply(age, male, mean)
-```
-
-We can also use the code below. This calculates the mean for males [male==1]. Remember to use == to set the value of the variable `male` to be equal to 1.
-
-
-```{r}
-mean(age[male==1])
-```
-
-<br>
-
-We can do the same for intervention group.
-
-```{r}
-tapply(age, intervention, mean)
-```
-
-Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
-
-
-```{r}
-aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
-```
-
-<br>
-We can also calculate the median, standard deviation, variance, minimum, maximum, range and sum. <br>
-*Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
 
 ```{r}
 sd(age)
@@ -138,6 +107,57 @@ max(age)
 range(age)
 sum(age)
 ```
+
+*Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
+
+We can also caluclate multiple a descriptive summary statistics of a numeric varible using the function ```summary()```
+
+```{r}
+summary(age)
+```
+
+## Activity
+
+Find the means, medians and range for `bp_baseline` and `bp_3m`.
+
+# Summary statistics by groups
+
+We can calculate statistics for different subsets or groups of the data by using R command ```tapply()```. The ```tapply()``` 
+command requires 3  arguments :
+
+ + a numeric variable which we want to summarise (in the example below this is ```age```) 
+ + a categorical variable indicating the subgroups,which we want to group by (in the example below this is ```male```)
+ + the function we wish to call on each subgroup (in the example below this is ```mean```)
+
+```{r}
+tapply(age, male, mean)
+```
+
+We can also calculate the mean for a sub group, by subsetting it. For example to calucate the mean of just the means (i.e where male==1). 
+Note the use of ```==``` for specifiying an equality condition.
+
+
+```{r}
+mean(age[male==1])
+```
+
+
+We can use the ```tapply()``` function to calculate the medians for the intervention groups.
+
+```{r}
+tapply(age, intervention, median)
+```
+
+We can also do more complicated subgroups, for example cross 
+Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
+
+
+```{r}
+aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
+```
+
+<br>
+
 
 <br>
 
