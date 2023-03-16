@@ -367,8 +367,8 @@ we can include the argument ```var.equal``` and set it to TRUE.
 t.test(age~male, var.equal=TRUE)
 ```
 
-If you are unsure whether you can assume equal variance, you can run a statistical test called an F test to confirm. The null hypothesis for this test 
-is that variances are equal. So a significant result means that the assumption of equal variances is rejected. To compare the variances in age by gender:
+If you are unsure whether you can assume equal variance, you can run a statistical test called an F test to confirm using the function ```var.test()```.
+ The null hypothesis for this test is that variances are equal. So a significant result means that the assumption of equal variances is rejected. To compare the variances in age by gender:
 
 ```{r}
 var.test(age ~ male)
@@ -419,9 +419,11 @@ t.test(bp_3m,bp_baseline,paired=FALSE)
 # Common statistical tests: Mann-Whitney test
 
 An non-parametric alternative to a t-test is a a Mann-Whitney U test, which is performed using by function ```wilcox.test()```. 
-It works in a very similar way to the two sample t.test, and many of the arguments are shared.
+It works in a very similar way to the two sample t- test, and many of the arguments are shared.
 
-
+```{r}
+wilcox.test(age~male, alternative = "greater")
+```
 
 # Common statistical tests: ANOVA
 
@@ -438,7 +440,7 @@ summary(aov(bp_3m ~ intervention))
 Note, that the ```aov()``` call doesn't output the test result we want. We have to additionally use the function ```summary()``` to extract and 
 print the required test result. This is not an uncommon approach for using statistical tests in R.
 
-We can get the exact same result using the ```anova()``` function. This version of the anova requires a linear model to be fit first using the 
+We can get the same result using the ```anova()``` function (give a rounding difference). This version of the anova requires a linear model to be fit first using the 
 ```lm()``` function.
 
 ```{r}
@@ -446,9 +448,33 @@ anova(lm(bp_3m ~ intervention))
 
 ```
 
-#### Task 17
+## Activity
 Perform a one-way ANOVA to compare `age` across the three intervention groups. 
 
-***
+
 # Common statistical tests: Chi-square test
 
+```{r}
+chisq.test(male ~ intervention)
+
+```
+
+# Common statistical tests: Correlation
+
+
+Before we perform a correlation test we can create a scatterplot to check the relationship between variables. For example, to check the relationship between `age` and `bp_baseline`:
+
+```{r}
+plot(age, bp_baseline)
+```
+
+For a Pearson correlation, remember that variables should be distributed normally and with a linear relationship. The Pearson correlation is the default method for the 'cor.test' command. We can use 'cor.test' to find the Pearson correlation between `age` and `bp_baseline`
+
+```{r}
+cor.test(age, bp_baseline)
+```
+
+For a Spearman correlation, we use `cor.test' but change the 'method' argument:
+```{r}
+cor.test(age, bp_baseline, method="spearman")
+```
