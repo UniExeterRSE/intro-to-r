@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Establishing Good Practices from the Start
+title: Establishing Good Practices when Coding
 order: 10
 session: 3
 length: 20
@@ -8,15 +8,15 @@ toc: true
 adapted: false
 ---
 
-# Good Practices
+# Becoming a proficient coder
 
-Already mentioned recording the commands that you ran.
+It is imperative to document the commands that you ran when performing an analysis. These should be saved in a file called script. 
 
 Always keep in mind these *Good Practices*.
 
 - *Commenting (#).* A script is a conversation with your future self.
 
-- *Outline.* Use the ouline feature to create documents with a structure.
+- *Outline.* Use the outline feature to create documents with a structure.
 
 - *Set up a working directory.* Use a command so that when you reopen your script, you know where everything is.
 
@@ -26,7 +26,7 @@ Always keep in mind these *Good Practices*.
 
 - *Save your workspace*... it will be handy later.
 
-- *One script per job.* When you become more proficient, you scripts will grow considerably. Try to create separate scripts, especially for data cleaning process.
+- *One script per job.* When you become more proficient, your scripts will grow considerably. Try to create separate scripts, especially for data cleaning process.
 
 - *Create a pseudocode.* Start your script by setting up the titles of your sections. Then progresively, populate the sections with subtitles and lastly, fill out your code with commands. Normally, I would add the sections: Set up, Data, Data Cleaning, Data analysis, Data plotting, and Wrap up. 
 
@@ -93,3 +93,11 @@ needs, but these should form the backbone of your working directory. For this
 workshop, you only need a `data/` folder.
 
 ![Example of a working directory structure](../images/R-ecology-work_dir_structure.png)
+
+# Performing reproducible analyses
+
+Once you are happy with your script or analysis, it is highly recommended that you run the whole script from top to bottom in one execution.
+This ensures that your script is complete and that your record of what you did is accurate. It can be very easy when developing a script by copying and pasting chunks of code, to forget to record something, or to run commands out of order. This may have an effect on the final output, and it may be impossible to work out what happened or why, or you may even not be aware of the effect. For this reason, we recommend rerunning your script at the end. If something goes wrong, and you get an error or a warning you know, you've missed a step out or need to fix it. 
+
+Most importantly, if you detect the mistake further down the line, it will be much easier to troubleshoot because you know that your script is a genuine
+reflection of what you did to the data, rather than an incomplete record of some of the steps you ran, in some order. 
