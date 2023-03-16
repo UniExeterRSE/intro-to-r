@@ -1,8 +1,7 @@
 
-
 This workshop was developed by Laura Roldan Gomez, Rebecca Smith, Theresa Wacker, Emma Walker and Fiona Warren.
 
-Inspired by and adopted from: 
+Inspired by and adapted from: 
 
 John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine (eds):
 "Software Carpentry: Programming with R."  Version 2016.06, June 2016,
