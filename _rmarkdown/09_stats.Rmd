@@ -418,7 +418,10 @@ t.test(bp_3m,bp_baseline,paired=FALSE)
 
 # Common statistical tests: Mann-Whitney test
 
-An non-parametric alternative to a t-test is a 
+An non-parametric alternative to a t-test is a a Mann-Whitney U test, which is performed using by function ```wilcox.test()```. 
+It works in a very similar way to the two sample t.test, and many of the arguments are shared.
+
+
 
 # Common statistical tests: ANOVA
 
