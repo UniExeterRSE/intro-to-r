@@ -1000,35 +1000,40 @@ Perform a one-way ANOVA to compare `age` across the three intervention groups.
 
 
 {% highlight r %}
-chisq.test(male ~ intervention)
+chisq.test(table(male, intervention))
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Warning in is.na(male ~ intervention): is.na() applied to non-(list or vector)
-## of type 'language'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in sum(x): invalid 'type' (language) of argument
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  table(male, intervention)
+## X-squared = 1.5097, df = 2, p-value = 0.4701
 {% endhighlight %}
 
 # Common statistical tests: Correlation
 
-
-Before we perform a correlation test we can create a scatterplot to check the relationship between variables. For example, to check the relationship between `age` and `bp_baseline`:
+When you have two continuous variables, it is likely a correlation statistics that you want to calculate. We can do this with the function ```cor()```.
+For example to calculate the correlation between age and BP at baseline we can run:
 
 
 {% highlight r %}
-plot(age, bp_baseline)
+cor(age, bp_baseline)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-44](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/09_stats/unnamed-chunk-44-1.png)
 
-For a Pearson correlation, remember that variables should be distributed normally and with a linear relationship. The Pearson correlation is the default method for the 'cor.test' command. We can use 'cor.test' to find the Pearson correlation between `age` and `bp_baseline`
+
+{% highlight text %}
+## [1] 0.01138201
+{% endhighlight %}
+
+The output of this function is very simple compared to the tests we looked at before, it is just a simple value. If you compare the function name to 
+the names o fthe other functions to perform statistical tests, this doesn't have the suffix ```.test```. This function simply caluclated the value of
+the correlation statistic and does not perform any hypothesis testing with it. To do that we need the ```cor.test()``` function. 
+
+We can use 'cor.test' to find the  correlation between `age` and `bp_baseline`
 
 
 {% highlight r %}
@@ -1051,7 +1056,10 @@ cor.test(age, bp_baseline)
 ## 0.01138201
 {% endhighlight %}
 
-For a Spearman correlation, we use `cor.test' but change the 'method' argument:
+The output here is now more similar to what we had before in that it reports a number of statistics relating to the test. 
+
+The default method for calculating the correlation is Pearson's, we can instead calculate Spearman's rank correlation coefficient, with the argument 
+```method```:
 
 {% highlight r %}
 cor.test(age, bp_baseline, method="spearman")
