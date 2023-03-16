@@ -10,27 +10,31 @@ adapted: false
 
 # Becoming a proficient coder
 
-It is imperative to document the commands that you ran when performing an analysis. These should be saved in a file called script. 
+It is imperative to document the commands that you ran when performing an analysis. These should be saved in a file, often known as a script, and with the suffix .r or .R which indicates that it is specifically an R script. 
 
-Always keep in mind these *Good Practices*.
+When you create your scripts there are a number of common conventions you should consider 
 
-- *Commenting (#).* A script is a conversation with your future self.
+- *Commenting (#).* When R sees a # it ignores anything that comes after in until a new line is started. So you can use to add any comments for the human reader as opposed to the computer. Because the R commands are written for the computer to read, a script containing just R code is not the easiest for a human to read. For these reason we need to add comments. There is an art to commenting effectively, often less is more. Comments should not just repeat what the code is doing they should be used to explain the reasoning behind various choices and explain things that are not obvious. 
 
-- *Outline.* Use the outline feature to create documents with a structure.
+- *Set the working directory.* Use a command so that when you reopen your script, you know where everything is.
 
-- *Set up a working directory.* Use a command so that when you reopen your script, you know where everything is.
+- *Coding convention*. Define your personal coding style and stick to it. An example can be found [here](http://adv-r.had.co.nz/Style.html).
 
-- *The devil is in the details* The most likely explanation for an error message is that you missed something small like a comma. Check for these missing details before stressing out.
+
+- *One script per job.* It is very tempting to just add to the end of an existing script but it is more efficient and effective to limit each script  to a single task. This makes them easier to navigate but also protects from errors or bugs negatively affecting everything else downstream. 
+
+- *Don't hoard your workspace* It can be really tempting to save everything you have ever done, so you can trace back any mistakes. But an chaotic environment is hard and confusing to navigate. Identify what you really need to keep, a well maintained script should mean you can easily recreate your analysis and debug that way rather than save all the stages of the analysis.
+
+- *Outline.* Use the outline feature in Rstudio to apply a consistent structure to all your scripts.
+
+- *The devil is in the details* Compared to other languages R error messages can be informative, try reading them and looking for key words to indicate what the problem might be. 
 
 - *Google it out* If you want to do something complicated chances are somebody else has tried before. Google for solutions to your problems. If there is no solution, use Stackoverflow.
 
-- *Save your workspace*... it will be handy later.
-
-- *One script per job.* When you become more proficient, your scripts will grow considerably. Try to create separate scripts, especially for data cleaning process.
 
 - *Create a pseudocode.* Start your script by setting up the titles of your sections. Then progresively, populate the sections with subtitles and lastly, fill out your code with commands. Normally, I would add the sections: Set up, Data, Data Cleaning, Data analysis, Data plotting, and Wrap up. 
 
-
+## Structuring your data and analysis 
 
 It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder, called the **working directory**. All of the
@@ -43,7 +47,7 @@ work.
 
 RStudio provides a helpful set of tools to do this through its "Projects"
 interface, which not only creates a working directory for you but also
-remembers its location (allowing you to quickly navigate to it) and optonally
+remembers its location (allowing you to quickly navigate to it) and optionally
 preserves custom settings and open files to make it easier to resume work after
 a break. Below, we will go through the steps for creating an RProject for this
 tutorial.
