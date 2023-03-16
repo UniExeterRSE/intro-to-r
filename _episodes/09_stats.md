@@ -13,14 +13,18 @@ attrib_license: CC-BY 4.0
 attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 ---
 
+
+
+
+
 R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R.
 
 # Loading the dataset
 
-To do statistics we need some observed data. We will use a dataset contained in the csv file [bp_dataset.csv]("../data/bp_dataset_session4.csv"). This dataset is based on a clinical trial to test the effect of two 
+To do statistics we need some observed data. We will use a dataset contained in the csv file [bp_dataset.csv](../data/bp_dataset_session4.csv). This dataset is based on a clinical trial to test the effect of two 
 drugs (Drug A and Drug B), compared with an inactive control drug (placebo), on blood pressure in people who have high blood pressure. The purpose of the 
 drugs is to reduce blood pressure. Some additional information about the people in the trial, such as their age and sex, is also provided (see 
-[codebook]("../data/bp_dataset_codebook_session4.xlsx") for further information about the variables).
+[codebook](../data/bp_dataset_codebook_session4.xlsx) for further information about the variables).
 
 Let's start by loading the dataset. You need to ensure that the dataset is located in your current working directory. 
 We will read in the csv file and assign it to a variable called ```bp_dataset```. The ```header=TRUE``` argument means R will take the entries in the first row 
@@ -29,19 +33,6 @@ We will read in the csv file and assign it to a variable called ```bp_dataset```
 
 {% highlight r %}
 bp_dataset<-read.csv(file="bp_dataset_session4.csv", header=TRUE)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Warning in file(file, "rt"): cannot open file 'bp_dataset_session4.csv': No
-## such file or directory
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in file(file, "rt"): cannot open the connection
 {% endhighlight %}
 
 Take a look at the column heads.
@@ -54,7 +45,13 @@ head(bp_dataset)
 
 
 {% highlight text %}
-## Error in head(bp_dataset): object 'bp_dataset' not found
+##   ptid male age intervention bp_baseline bp_3m bp_6m
+## 1    1    1  41       Drug B         218   153   163
+## 2    2    0  46       Drug B         200   162   177
+## 3    3    0  37       Drug A         198   122   166
+## 4    4    0  46       Drug A         202   148   128
+## 5    5    1  44      Control         142   196   231
+## 6    6    1  36       Drug B         148   191   164
 {% endhighlight %}
 
 Let's find out how many rows (observations) and variables (columns) are in this dataset using the 'dim' command (for dimensions).
@@ -67,7 +64,7 @@ dim(bp_dataset)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'bp_dataset' not found
+## [1] 100   7
 {% endhighlight %}
 
 
@@ -94,7 +91,14 @@ str(bp_dataset)
 
 
 {% highlight text %}
-## Error in str(bp_dataset): object 'bp_dataset' not found
+## 'data.frame':	100 obs. of  7 variables:
+##  $ ptid        : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ male        : int  1 0 0 0 1 1 0 0 1 1 ...
+##  $ age         : int  41 46 37 46 44 36 65 69 58 65 ...
+##  $ intervention: chr  "Drug B" "Drug B" "Drug A" "Drug A" ...
+##  $ bp_baseline : int  218 200 198 202 142 148 166 201 206 140 ...
+##  $ bp_3m       : int  153 162 122 148 196 191 140 141 173 125 ...
+##  $ bp_6m       : int  163 177 166 128 231 164 152 113 164 115 ...
 {% endhighlight %}
 
 In this dataset we have both integer and character variables. Gender is provided as a binary, indicator or dummary variable called ```male``` coded as 0 
@@ -107,9 +111,10 @@ The variable `intervention` is a character variable, but could be an integer cod
 
 # Summary statistics
 
-In this dataset, there are 4 numeric variables. These are ```age```, and blood pressure measured at three timepoints (```bp_baseline```, ```bp_3m```, ```bp_6m```).
+In this dataset, there are 4 numeric variables. These are ```age```, and blood pressure measured at three timepoints (```bp_baseline```, 
+```bp_3m```, ```bp_6m```).
 
-We want to find the mean, median, standard deviation and variance for these variables. Let's start with the mean. To find the mean for `age` we can use:
+We want to find the mean, median, standard deviation and variance for these variables. Let's start with the mean. To find the mean for ```age``` we can use:
 
 
 {% highlight r %}
@@ -119,103 +124,26 @@ mean(bp_dataset$age)
 
 
 {% highlight text %}
-## Error in mean(bp_dataset$age): object 'bp_dataset' not found
+## [1] 49.03
 {% endhighlight %}
 
-We can attach the dataframe `bp_dataset`, so we don't need to use the $ notation for each command. Remember to use the 'detach' command when you wish to detach the dataframe.
+We can attach the dataframe ```bp_dataset```, so we don't need to use the ```$``` notation for each command. Remember to use the ```detach()``` 
+command when you wish to detach the dataframe.
 
 
 {% highlight r %}
 attach(bp_dataset)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in attach(bp_dataset): object 'bp_dataset' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 mean(age)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in mean(age): object 'age' not found
-{% endhighlight %}
-<br>
-
-#### Task 1
-Find the means for `bp_baseline` and `bp_3m`.
-
-<br>
-
-We can summarise for different subsets of the data by using R command 'tapply'. The 'tapply' command takes 3 arguments in the below command:
-
- + `age`: numeric variable for which we wish to calculate the mean
- + `male`: variable indicating the subgroups, in this case 0 and 1
- + mean: the statistic we wish to calculate
-
-
-{% highlight r %}
-tapply(age, male, mean)
+## [1] 49.03
 {% endhighlight %}
 
+We can also calculate the median, standard deviation, variance, minimum, maximum, range and sum fairly easily using base R functions. 
 
-
-{% highlight text %}
-## Error in tapply(age, male, mean): object 'male' not found
-{% endhighlight %}
-
-We can also use the code below. This calculates the mean for males [male==1]. Remember to use == to set the value of the variable `male` to be equal to 1.
-
-
-
-{% highlight r %}
-mean(age[male==1])
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in mean(age[male == 1]): object 'age' not found
-{% endhighlight %}
-
-<br>
-
-We can do the same for intervention group.
-
-
-{% highlight r %}
-tapply(age, intervention, mean)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in tapply(age, intervention, mean): object 'intervention' not found
-{% endhighlight %}
-
-Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
-
-
-
-{% highlight r %}
-aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(m$data, parent.frame()): object 'bp_dataset' not found
-{% endhighlight %}
-
-<br>
-We can also calculate the median, standard deviation, variance, minimum, maximum, range and sum. <br>
-*Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
 
 
 {% highlight r %}
@@ -225,7 +153,7 @@ sd(age)
 
 
 {% highlight text %}
-## Error in is.data.frame(x): object 'age' not found
+## [1] 12.31116
 {% endhighlight %}
 
 
@@ -237,7 +165,7 @@ median(age)
 
 
 {% highlight text %}
-## Error in median(age): object 'age' not found
+## [1] 47
 {% endhighlight %}
 
 
@@ -249,7 +177,7 @@ var(age)
 
 
 {% highlight text %}
-## Error in is.data.frame(x): object 'age' not found
+## [1] 151.5647
 {% endhighlight %}
 
 
@@ -261,7 +189,7 @@ min(age)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'age' not found
+## [1] 26
 {% endhighlight %}
 
 
@@ -273,7 +201,7 @@ max(age)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'age' not found
+## [1] 81
 {% endhighlight %}
 
 
@@ -285,7 +213,7 @@ range(age)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'age' not found
+## [1] 26 81
 {% endhighlight %}
 
 
@@ -297,8 +225,103 @@ sum(age)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'age' not found
+## [1] 4903
 {% endhighlight %}
+
+*Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
+
+We can also caluclate multiple a descriptive summary statistics of a numeric varible using the function ```summary()```
+
+
+{% highlight r %}
+summary(age)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   26.00   40.00   47.00   49.03   56.25   81.00
+{% endhighlight %}
+
+## Activity
+
+Find the means, medians and range for `bp_baseline` and `bp_3m`.
+
+# Summary statistics by groups
+
+We can calculate statistics for different subsets or groups of the data by using R command ```tapply()```. The ```tapply()``` 
+command requires 3  arguments :
+
+ + a numeric variable which we want to summarise (in the example below this is ```age```) 
+ + a categorical variable indicating the subgroups,which we want to group by (in the example below this is ```male```)
+ + the function we wish to call on each subgroup (in the example below this is ```mean```)
+
+
+{% highlight r %}
+tapply(age, male, mean)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##        0        1 
+## 51.94595 47.31746
+{% endhighlight %}
+
+We can also calculate the mean for a sub group, by subsetting it. For example to calucate the mean of just the means (i.e where male==1). 
+Note the use of ```==``` for specifiying an equality condition.
+
+
+
+{% highlight r %}
+mean(age[male==1])
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 47.31746
+{% endhighlight %}
+
+
+We can use the ```tapply()``` function to calculate the medians for the intervention groups.
+
+
+{% highlight r %}
+tapply(age, intervention, median)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Control  Drug A  Drug B 
+##    49.5    49.5    42.5
+{% endhighlight %}
+
+We can also do more complicated subgroups, for example cross 
+Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
+
+
+
+{% highlight r %}
+aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##   male intervention      age
+## 1    0      Control 53.84615
+## 2    1      Control 49.33333
+## 3    0       Drug A 56.63636
+## 4    1       Drug A 47.73913
+## 5    0       Drug B 46.07692
+## 6    1       Drug B 45.72000
+{% endhighlight %}
+
+<br>
+
 
 <br>
 
@@ -312,7 +335,8 @@ quantile(age, probs = c(.25, .5, .75))
 
 
 {% highlight text %}
-## Error in quantile(age, probs = c(0.25, 0.5, 0.75)): object 'age' not found
+##   25%   50%   75% 
+## 40.00 47.00 56.25
 {% endhighlight %}
 
 To get the inter-quartile range (75th percentile minus 25th percentile):
@@ -325,7 +349,7 @@ IQR(age)
 
 
 {% highlight text %}
-## Error in quantile(as.numeric(x), c(0.25, 0.75), na.rm = na.rm, names = FALSE, : object 'age' not found
+## [1] 16.25
 {% endhighlight %}
 
 <br>
@@ -346,7 +370,9 @@ table(male)
 
 
 {% highlight text %}
-## Error in table(male): object 'male' not found
+## male
+##  0  1 
+## 37 63
 {% endhighlight %}
 
 If we also wish to calculate proportions or percentages, we can use the 'prop.table' command. We first need to create the table and then pass to 'prop.table'.
@@ -354,24 +380,15 @@ If we also wish to calculate proportions or percentages, we can use the 'prop.ta
 
 {% highlight r %}
 table.male<-table(male)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in table(male): object 'male' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 prop.table(table.male)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in prop.table(table.male): object 'table.male' not found
+## male
+##    0    1 
+## 0.37 0.63
 {% endhighlight %}
 
 We can also create a table for a subgroup of the data. For example: table by sex for people aged over 50.
@@ -384,7 +401,9 @@ table(male[age>50])
 
 
 {% highlight text %}
-## Error in table(male[age > 50]): object 'male' not found
+## 
+##  0  1 
+## 17 19
 {% endhighlight %}
 
 We can also produce a table of proportions.
@@ -392,24 +411,15 @@ We can also produce a table of proportions.
 
 {% highlight r %}
 table.male.over50<-table(male[age>49])
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in table(male[age > 49]): object 'male' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 prop.table(table.male.over50)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in prop.table(table.male.over50): object 'table.male.over50' not found
+## 
+##    0    1 
+## 0.45 0.55
 {% endhighlight %}
 
 We can also produce cross-tabulations for two categorical variables.
@@ -422,31 +432,26 @@ table(male, intervention)
 
 
 {% highlight text %}
-## Error in table(male, intervention): object 'male' not found
+##     intervention
+## male Control Drug A Drug B
+##    0      13     11     13
+##    1      15     23     25
 {% endhighlight %}
 
 
 
 {% highlight r %}
 table.male.intervention<-table(male, intervention)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in table(male, intervention): object 'male' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 prop.table(table.male.intervention)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in prop.table(table.male.intervention): object 'table.male.intervention' not found
+##     intervention
+## male Control Drug A Drug B
+##    0    0.13   0.11   0.13
+##    1    0.15   0.23   0.25
 {% endhighlight %}
 
 <br>
