@@ -455,26 +455,33 @@ Perform a one-way ANOVA to compare `age` across the three intervention groups.
 # Common statistical tests: Chi-square test
 
 ```{r}
-chisq.test(male ~ intervention)
+chisq.test(table(male, intervention))
 
 ```
 
 # Common statistical tests: Correlation
 
-
-Before we perform a correlation test we can create a scatterplot to check the relationship between variables. For example, to check the relationship between `age` and `bp_baseline`:
+When you have two continuous variables, it is likely a correlation statistics that you want to calculate. We can do this with the function ```cor()```.
+For example to calculate the correlation between age and BP at baseline we can run:
 
 ```{r}
-plot(age, bp_baseline)
+cor(age, bp_baseline)
 ```
 
-For a Pearson correlation, remember that variables should be distributed normally and with a linear relationship. The Pearson correlation is the default method for the 'cor.test' command. We can use 'cor.test' to find the Pearson correlation between `age` and `bp_baseline`
+The output of this function is very simple compared to the tests we looked at before, it is just a simple value. If you compare the function name to 
+the names o fthe other functions to perform statistical tests, this doesn't have the suffix ```.test```. This function simply caluclated the value of
+the correlation statistic and does not perform any hypothesis testing with it. To do that we need the ```cor.test()``` function. 
+
+We can use 'cor.test' to find the  correlation between `age` and `bp_baseline`
 
 ```{r}
 cor.test(age, bp_baseline)
 ```
 
-For a Spearman correlation, we use `cor.test' but change the 'method' argument:
+The output here is now more similar to what we had before in that it reports a number of statistics relating to the test. 
+
+The default method for calculating the correlation is Pearson's, we can instead calculate Spearman's rank correlation coefficient, with the argument 
+```method```:
 ```{r}
 cor.test(age, bp_baseline, method="spearman")
 ```
