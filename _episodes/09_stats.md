@@ -686,7 +686,9 @@ class(t.out$conf.int)
 ## [1] "numeric"
 {% endhighlight %}
 
-While the p-value and estimated mean were single values, the confindence interval has returned a vector of length 2. 
+While the p-value and estimated mean were single values, the confidence interval has returned a vector of length 2. 
+
+
 
 # Common statistical tests: Two-sample unpaired t-test
 
@@ -697,7 +699,7 @@ In this example, we want to compare the mean age between males and females, or i
 for males and females.
 
 As we have all the data for our response variable (also called outcome variable or dependent variable), age in one object and we have a second object 
-which indicates which enties are female and which are male, we will use the formula method for specifying the comparision we want to make. 
+which indicates which entries are female and which are male, we will use the formula method for specifying the comparision we want to make. 
 
 
 {% highlight r %}
@@ -720,68 +722,55 @@ t.test(age~male)
 ##        51.94595        47.31746
 {% endhighlight %}
 
-The output looks very similar to the output for the one sample t-test, with a couple of simple changes. 
+The output looks very similar to the output for the one sample t-test, with a couple of differences. 
 
-1. The name of the test has changed to "Two Sample t-test"
+1. The name of the test has changed to "Welch Two Sample t-test".
+2. The alternative hypothesis is different.
+3. There are two samples estimates, one for each group. 
 
-
-
-
-The default behaviour the ```t.test()``` function is to assumes unequal variance.
-We can also use a factor variable to indicate the two groups (i.e. as opposed to an integer variable with groups coded as numbers).
+Instead of using the formula method, we can code a two sample test where the data for each group is stored in a separate object. To demonstrate this
+we will create two numeric vectors, one with the ages of the female participants, and one with the ages of the male partipicants. We then provide the 
+two vectors as the first two argument in the ```t.test()``` function. 
 
 
 {% highlight r %}
-t.test(age~male_factor)
+age.males<-age[male==1]
+age.females<-age[female==1]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in eval(predvars, data, env): object 'male_factor' not found
+## Error in eval(expr, envir, enclos): object 'female' not found
 {% endhighlight %}
 
-We can test for equal variance by using a statistical test called an F test. The null hypothesis for this test is that variances are equal. To compare the variance of `age` by `male`:
 
 
 {% highlight r %}
-var.test(age ~ male)
+t.test(age.males, age.females)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 
-## 	F test to compare two variances
-## 
-## data:  age by male
-## F = 1.5248, num df = 36, denom df = 62, p-value = 0.1431
-## alternative hypothesis: true ratio of variances is not equal to 1
-## 95 percent confidence interval:
-##  0.8663612 2.8110952
-## sample estimates:
-## ratio of variances 
-##           1.524841
+## Error in t.test.default(age.males, age.females): object 'age.females' not found
 {% endhighlight %}
 
-An alternative statistical test to test for equal variances is Bartlett's test (again, the null hypothesis assumes that variances are equal for each group):
+We can perform a one-side test using the ```alternative``` argument as shown above. 
 
 
 {% highlight r %}
-bartlett.test(age ~ male)
+t.test(age.males, age.females, alternative = "less")
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 
-## 	Bartlett test of homogeneity of variances
-## 
-## data:  age by male
-## Bartlett's K-squared = 2.0664, df = 1, p-value = 0.1506
+## Error in t.test.default(age.males, age.females, alternative = "less"): object 'age.females' not found
 {% endhighlight %}
 
-If we wish to repeat the t-test using the assumption of equal variance:
+The default behaviour the ```t.test()``` function is to assumes unequal variance. If we wish to repeat the t-test using the assumption of equal variance
+we can include the argument ```var.equal``` and set it to TRUE. 
 
 
 {% highlight r %}
@@ -804,16 +793,63 @@ t.test(age~male, var.equal=TRUE)
 ##        51.94595        47.31746
 {% endhighlight %}
 
-### Paired t-test: comparing pairs of matched values
+If you are unsure whether you can assume equal variance, you can run a statistical test called an F test to confirm. The null hypothesis for this test 
+is that variances are equal. So a significant result means that the assumption of equal variances is rejected. To compare the variances in age by gender:
 
-A paired t-test is used to compare two variables that are matched or paired in some way, for examples, measurements made on the same person at two different times. The paired t-test uses the differences between matched pairs of measurements to test whether the true means are equal.
 
-For example, we may wish to perform a paired- t-test to test whether the true mean values for BP at baseline (`bp_baseline`) and BP at 3 months (`bp_3m`) are the same, taking into account that each person has their blood pressure measured at both baseline and 3 months, i.e. each measurement at baseline has a 'matched' measurement at 3 months taken in the same person.
+{% highlight r %}
+var.test(age ~ male)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	F test to compare two variances
+## 
+## data:  age by male
+## F = 1.5248, num df = 36, denom df = 62, p-value = 0.1431
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.8663612 2.8110952
+## sample estimates:
+## ratio of variances 
+##           1.524841
+{% endhighlight %}
+
+An alternative statistical test to test for equal variances is Bartlett's test (again, the null hypothesis is that the variances are equal for each group):
+
+
+{% highlight r %}
+bartlett.test(age ~ male)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  age by male
+## Bartlett's K-squared = 2.0664, df = 1, p-value = 0.1506
+{% endhighlight %}
+
+
+# Common statistical tests: Paired t-test
+
+A paired t-test is used to compare two variables that are matched or paired in some way, for examples, measurements made on the same person at 
+two different times. The paired t-test uses the differences between matched pairs of measurements to test whether the true means are equal or the 
+difference between them is 0.
+
+For example, we may want to perform a paired- t-test to test whether the true mean values for BP at baseline (```bp_baseline```) and BP at 
+3 months (```bp_3m```) are the same, taking into account that the blood pressure measurements come from the same individual, i.e. for every
+baseline measurement, there is a 'matched' measurement taken at 3 months. To do a paired t-test we need to include the argument ```paired``` and 
+set it to TRUE.
 
 
 
 {% highlight r %}
-t.test(bp_3m,bp_baseline,paired=TRUE)
+t.test(bp_3m,bp_baseline, paired=TRUE)
 {% endhighlight %}
 
 
@@ -831,6 +867,12 @@ t.test(bp_3m,bp_baseline,paired=TRUE)
 ## mean difference 
 ##          -16.52
 {% endhighlight %}
+
+We can see the output is similar to before but with the following differences
+
+1. Test title is changed to "Paired t-test"
+2. The alternative hypothesis is different
+3. We have a single sample estimate which is the mean difference between the groups. 
 
 Note that the results are different if we do not
 take into account the paired nature of the variables.
@@ -856,34 +898,86 @@ t.test(bp_3m,bp_baseline,paired=FALSE)
 ##    165.88    182.40
 {% endhighlight %}
 
-<br>
 
-#### Task 14
-Perform a single sample 2-sided t-test to test whether the true mean of baseline BP is equal to 170. 
-<br>
+## Activity 
+1. Perform a single sample 2-sided t-test to test whether the true mean of baseline BP is equal to 170. 
+2. Perform an unpaired t-test to compare mean BP at 3 months between Drug A and the control group. 
+3. Perform a paired t-test to test the null hypothesis that mean difference is 0 comparing BP at 6 months with BP at baseline.
 
-Repeat for test of whether true mean of baseline BP is equal to 180.<br>
+# Common statistical tests: Mann-Whitney test
 
-Repeat for a 1-sided t-test of whether true mean of baseline BP is greater than 185.
+An non-parametric alternative to a t-test is a 
 
-<br>
+# Common statistical tests: ANOVA
 
+We perform a one-way ANOVA (ANalysis Of VAriance test) to compare means across three or more groups. The null hypothesis is that the mean 
+is equal across groups. There are two ways to perform an ANOVA in R, both use the formula method to specify the comparision we want to make.
 
-#### Task 15
-Perform an unpaired t-test to compare mean BP at 3 months between Drug A and the control group. Hint: use the ! symbol to indicate a logical statement about intervention.
-
-<br>
-
-Do the same to compare mean BP at 3 months between Drug B vs control, and between Drug B vs Drug A.
-
-<br>
+For example, to compare mean BP at 3 months across Drug A, Drug B, Control, first using the ```aov() ``` function:
 
 
-#### Task 16
-Perform a paired t-test to test the null hypothesis that mean difference is 0 comparing BP at 6 months with BP at baseline.
-<br>
+{% highlight r %}
+aov(bp_3m ~ intervention)
+{% endhighlight %}
 
-Repeat to compare BP at 6 months with BP at 3 months for women (male=0) only.
+
+
+{% highlight text %}
+## Call:
+##    aov(formula = bp_3m ~ intervention)
+## 
+## Terms:
+##                 intervention Residuals
+## Sum of Squares      12718.47  41840.09
+## Deg. of Freedom            2        97
+## 
+## Residual standard error: 20.76875
+## Estimated effects may be unbalanced
+{% endhighlight %}
+
+
+
+{% highlight r %}
+summary(aov(bp_3m ~ intervention))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##              Df Sum Sq Mean Sq F value   Pr(>F)    
+## intervention  2  12718    6359   14.74 2.57e-06 ***
+## Residuals    97  41840     431                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+{% endhighlight %}
+
+Note, that the ```aov()``` call doesn't output the test result we want. We have to additionally use the function ```summary()``` to extract and 
+print the required test result. This is not an uncommon approach for using statistical tests in R.
+
+We can get the exact same result using the ```anova()``` function. This version of the anova requires a linear model to be fit first using the 
+```lm()``` function.
+
+
+{% highlight r %}
+anova(lm(bp_3m ~ intervention))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Analysis of Variance Table
+## 
+## Response: bp_3m
+##              Df Sum Sq Mean Sq F value    Pr(>F)    
+## intervention  2  12718  6359.2  14.743 2.567e-06 ***
+## Residuals    97  41840   431.3                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+{% endhighlight %}
+
+#### Task 17
+Perform a one-way ANOVA to compare `age` across the three intervention groups. 
 
 ***
+# Common statistical tests: Chi-square test
 
