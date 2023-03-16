@@ -17,7 +17,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 
-R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R. Please note that the focus here is on how
+R is synomous with data analysis. Here we will learn how to perform a number of common statistical tests with R. Please note that the focus here is on how
 to perform a given test in R, it is not to discuss the merits of or scenarios in which you would use a specific test.
 
 # Loading the dataset
@@ -36,7 +36,7 @@ We will read in the csv file and assign it to a variable called ```bp_dataset```
 bp_dataset<-read.csv(file="bp_dataset_session4.csv", header=TRUE)
 {% endhighlight %}
 
-Take a look at the column heads.
+Take a look at the first six rows to get a sense of the dataset.
 
 
 {% highlight r %}
@@ -79,7 +79,7 @@ remit of this course - but you can find out more about the principles of [tidy d
     </pre>
 </details>
 
-We also want to check the types of variable in the dataframe. The 'str' command allows us to check the structure of the dataframe and tells us 
+We also want to check the types of variable in the dataframe. The ```str()``` command allows us to check the structure of the dataframe and tells us 
 about the types of variables in our dataset.
 
 
@@ -100,11 +100,15 @@ str(bp_dataset)
 ##  $ bp_6m       : int  163 177 166 128 231 164 152 113 164 115 ...
 {% endhighlight %}
 
-In this dataset we have both integer and character variables. Gender is provided as a binary, indicator or dummary variable called ```male``` coded as 0 
-(for female) and 1 (for male). This is not nessecary, if it was coded as a factor with the levels "Female" and "Male" R would be happy to use in the 
-statistical functions. Coding it in this way however, is more aligned with how it is used in statistics, and may make interpetation easier. 
+In this dataset we have both integer and character variables. Gender is provided as a binary variable 
+(also known as an indicator or dummay variable called ```male``` coded as 0 
+(for female) and 1 (for male). This is not nessecary, if it was coded as a factor with the levels 
+"Female" and "Male" R would be happy to use in the 
+statistical functions. Coding it in this way however, is more aligned with how it is used in statistics, 
+and may make interpetation easier. 
 
-The variable `intervention` is a character variable.
+The variable `intervention` is a character variable, although arguably should be coded as a factor. However,
+in most cases R will convert it to a factor within the function calls if it is needed.
 
 
 # Summary statistics
@@ -351,21 +355,10 @@ aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
 ## 6    1       Drug B 45.72000
 {% endhighlight %}
 
-
-{% highlight r %}
-aggregate(age, bp_baseline ~ male + intervention, data=bp_dataset, FUN=mean)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in aggregate.formula(x = by, data = x, FUN = FUN, ...): formal argument "data" matched by multiple actual arguments
-{% endhighlight %}
-
 ## Activity
 
-Calculate the mean, SD, median, 10th and 90th percentiles for `bp_baseline` for each intervention group. 
-Also calculate the 25th centile, 50th centile (median) and 75th centile for `age`, for each combination of sex and intervention group. 
+1. Calculate the mean, SD, median, 10th and 90th percentiles for `bp_baseline` for each intervention group. 
+2. Calculate the 25th centile, 50th centile (median) and 75th centile for `age`, for each combination of sex and intervention group. 
 
 
 # Summary statistics for categorical data
@@ -385,7 +378,8 @@ table(male)
 ## 37 63
 {% endhighlight %}
 
-We can also produce cross-tabulations for two categorical variables. In fact we can produce tables for more than 2 categorical variables. 
+We can also produce cross-tabulations for two categorical variables. The first variable will form the rows, and The
+second variable the columns. 
 
 
 {% highlight r %}
@@ -402,8 +396,11 @@ table(male, intervention)
 {% endhighlight %}
 
 
+In fact we can produce tables for more than 2 categorical variables. R will print these as a series of 2 dimensional
+tables for fixed values of the other variables.
+
 If we also wish to calculate proportions or percentages, we can use the ```prop.table()``` command. We first need to create the 
-table and then pass to ```prop.table()```. Youcan either do this in two stages:
+table and then pass to ```prop.table()```. You can either do this in two stages:
 
 
 {% highlight r %}
@@ -453,14 +450,15 @@ table(male[age>50])
 
 
 ## Activity 
-Create table of frequencies and a table of percentages for each intervention group.
+1. Create table of frequencies of the number of indivduals in each intervention group. Convert this into 
+and a table of percentages.
 
-Create table of frequencies and a table of percentages for intervention group stratified by whether their baseline blood pressure is 
+2. Create table of frequencies of each intervention group stratified by whether individual's baseline blood pressure is 
 greater than or equal to 180.
 
 # Common statistical tests: One-sample t-test
 
-There are several types of t-test. We will start with the simplest: a one-sample 2-sided t-test to test the null hypothesis that the true mean 
+There are several types of t-test. We will start with the simplest: a one-sample two-sided t-test to test the null hypothesis that the true mean 
 value of a continuous variable is equal to a pre-specified value. The default behaviour, and the most common application is to compare to a value of 0.
 
 
@@ -492,14 +490,14 @@ We can see there is a statement at the top of the output reminding or confirming
 of which variable/data this was performed on. 
 
 We then have a line of multiple test statistics, including the p-value. Here we can see our test result is highly significant with p < 2.2e-16. Given 
-we are analysing a population of adults, they are all a lot older than 0 so it is not surprising. The function writers hhave take the executive decision
+we are analysing a population of adults, they are all a lot older than 0 so it is not surprising. The function writers have take the executive decision
 to report the p-value as < 2.2e-16 rather than give the specific value. In some fields/journals/research group, this approximation is not good enough. 
 Later we will show you how to extract a more precise p-value. 
 
 Underneath this we have a confirmation of the alternative hypothesis the statistic was considered against, we then have the confidence interval and the 
 estimated mean of the sample.
 
-We can vary the width of the confidence interval provided as part of the t-test output, by including the argument ```conf.int```. The default is 95% CI.
+We can vary the width of the confidence interval provided as part of the t-test output, by including the argument ```conf.int```. The default is the 95% CI.
 For the 90% confidence interval, we can run
 
 
@@ -576,7 +574,7 @@ t.test(age, mu=50)
 
 If you are only performing one (or a few) statistical tests, and you are working interatively then you might be ok to manually copy the result from the 
 console. However, there are likely times when you want to extract the result from the test for further processing, for example enter it into a table to 
-save to your computer. We can save the output of a t.test (or indeed any other staistical test or function) to a variable, meaning we can manipulate it 
+save to your computer. We can save the output of a t.test (or indeed any other statistical test or function) to a variable, meaning we can manipulate it 
 further.
 
 
@@ -674,19 +672,8 @@ t.out$conf.int
 ## [1] 0.95
 {% endhighlight %}
 
-
-
-{% highlight r %}
-class(t.out$conf.int)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1] "numeric"
-{% endhighlight %}
-
-While the p-value and estimated mean were single values, the confidence interval has returned a vector of length 2. 
+While the p-value and estimated mean were single values, the confidence interval has returned a vector of length 2. The ```htest```
+object contains a range of different elements. 
 
 
 
@@ -699,7 +686,8 @@ In this example, we want to compare the mean age between males and females, or i
 for males and females.
 
 As we have all the data for our response variable (also called outcome variable or dependent variable), age in one object and we have a second object 
-which indicates which entries are female and which are male, we will use the formula method for specifying the comparision we want to make. 
+which indicates which entries are female and which are male, we will use the formula method (signalled by the ```~```)
+for specifying the comparision we want to make. 
 
 
 {% highlight r %}
@@ -735,25 +723,25 @@ two vectors as the first two argument in the ```t.test()``` function.
 
 {% highlight r %}
 age.males<-age[male==1]
-age.females<-age[female==1]
-{% endhighlight %}
+age.females<-age[male==0]
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'female' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 t.test(age.males, age.females)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in t.test.default(age.males, age.females): object 'age.females' not found
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  age.males and age.females
+## t = -1.739, df = 63.594, p-value = 0.08687
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -9.9461538  0.6891826
+## sample estimates:
+## mean of x mean of y 
+##  47.31746  51.94595
 {% endhighlight %}
 
 We can perform a one-side test using the ```alternative``` argument as shown above. 
@@ -766,7 +754,17 @@ t.test(age.males, age.females, alternative = "less")
 
 
 {% highlight text %}
-## Error in t.test.default(age.males, age.females, alternative = "less"): object 'age.females' not found
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  age.males and age.females
+## t = -1.739, df = 63.594, p-value = 0.04343
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##        -Inf -0.1859434
+## sample estimates:
+## mean of x mean of y 
+##  47.31746  51.94595
 {% endhighlight %}
 
 The default behaviour the ```t.test()``` function is to assumes unequal variance. If we wish to repeat the t-test using the assumption of equal variance
@@ -839,9 +837,9 @@ bartlett.test(age ~ male)
 
 A paired t-test is used to compare two variables that are matched or paired in some way, for examples, measurements made on the same person at 
 two different times. The paired t-test uses the differences between matched pairs of measurements to test whether the true means are equal or the 
-difference between them is 0.
+difference between them is 0. Therefore, the length of both vectors needs to be the same.
 
-For example, we may want to perform a paired- t-test to test whether the true mean values for BP at baseline (```bp_baseline```) and BP at 
+For example, we may want to perform a paired t-test to test whether the true mean values for BP at baseline (```bp_baseline```) and BP at 
 3 months (```bp_3m```) are the same, taking into account that the blood pressure measurements come from the same individual, i.e. for every
 baseline measurement, there is a 'matched' measurement taken at 3 months. To do a paired t-test we need to include the argument ```paired``` and 
 set it to TRUE.
@@ -925,6 +923,36 @@ wilcox.test(age~male, alternative = "greater")
 ## alternative hypothesis: true location shift is greater than 0
 {% endhighlight %}
 
+The output is shorter (as the test has less components) but it follows a similar format the that of the t-test.
+
+We can save this output as a variable and extract the p-value in the same way as the t-test. The elements within 
+the variable are different to the t-test output but they are accessed in the same way.
+
+
+{% highlight r %}
+m.out<-wilcox.test(age~male, alternative = "greater")
+m.out$p.value
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 0.06865345
+{% endhighlight %}
+
+
+
+{% highlight r %}
+names(m.out)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "statistic"   "parameter"   "p.value"     "null.value"  "alternative"
+## [6] "method"      "data.name"
+{% endhighlight %}
+
 # Common statistical tests: ANOVA
 
 We perform a one-way ANOVA (ANalysis Of VAriance test) to compare means across three or more groups. The null hypothesis is that the mean 
@@ -968,8 +996,8 @@ summary(aov(bp_3m ~ intervention))
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 {% endhighlight %}
 
-Note, that the ```aov()``` call doesn't output the test result we want. We have to additionally use the function ```summary()``` to extract and 
-print the required test result. This is not an uncommon approach for using statistical tests in R.
+Note, that the ```aov()``` call doesn't output the complete test result we want. We have to additionally use the function ```summary()``` to extract and 
+print the required test result. This is not an uncommon approach for performing statistical tests in R.
 
 We can get the same result using the ```anova()``` function (give a rounding difference). This version of the anova requires a linear model to be fit first using the 
 ```lm()``` function.
@@ -997,6 +1025,10 @@ Perform a one-way ANOVA to compare `age` across the three intervention groups.
 
 
 # Common statistical tests: Chi-square test
+
+Chi square tests are used to test for a relationship between two categorical variables. 
+The function is ```chisq.test()``` and requires a cross tabulation of the two variables as the input.
+
 
 
 {% highlight r %}
@@ -1033,7 +1065,7 @@ The output of this function is very simple compared to the tests we looked at be
 the names o fthe other functions to perform statistical tests, this doesn't have the suffix ```.test```. This function simply caluclated the value of
 the correlation statistic and does not perform any hypothesis testing with it. To do that we need the ```cor.test()``` function. 
 
-We can use 'cor.test' to find the  correlation between `age` and `bp_baseline`
+We can use ```cor.test``` to find the  correlation between `age` and `bp_baseline`
 
 
 {% highlight r %}
