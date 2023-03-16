@@ -583,6 +583,30 @@ further.
 
 {% highlight r %}
 t.out<-t.test(age, mu=50)
+t.out
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	One Sample t-test
+## 
+## data:  age
+## t = -0.7879, df = 99, p-value = 0.4326
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  46.5872 51.4728
+## sample estimates:
+## mean of x 
+##     49.03
+{% endhighlight %}
+
+As before, when we defined or created a variable, there is no output to the console. We can see the output by entering the name of the object. Let's 
+explore the object that we have created. If we use ```class()``` we can learn what type of object it is.
+
+
+{% highlight r %}
 class(t.out)
 {% endhighlight %}
 
@@ -592,6 +616,8 @@ class(t.out)
 ## [1] "htest"
 {% endhighlight %}
 
+```htest``` - that's a new one. This is a type of object that has been specfying defined to hold the result of a t-test. It consists of different objects
+or slots where didferent parts of the result are stored. We can get a list of this elements with the function ```names()```
 
 
 {% highlight r %}
@@ -605,6 +631,8 @@ names(t.out)
 ##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
 {% endhighlight %}
 
+We can see 10 items listed. All of these are named elements stored within our ```htest``` object which we can extract by name using the ```$```. For example 
+we can get just the p-value as follows:
 
 
 {% highlight r %}
@@ -617,6 +645,7 @@ t.out$p.value
 ## [1] 0.432636
 {% endhighlight %}
 
+We can get the estimated mean:
 
 
 {% highlight r %}
@@ -630,18 +659,45 @@ t.out$estimate
 ##     49.03
 {% endhighlight %}
 
+We can get the confidence interval:
+
+
+{% highlight r %}
+t.out$conf.int
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 46.5872 51.4728
+## attr(,"conf.level")
+## [1] 0.95
+{% endhighlight %}
+
+
+
+{% highlight r %}
+class(t.out$conf.int)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "numeric"
+{% endhighlight %}
+
+While the p-value and estimated mean were single values, the confindence interval has returned a vector of length 2. 
 
 # Common statistical tests: Two-sample unpaired t-test
 
-The two-sample unpaired t-test, also known as an independent sample t-test is used to compare the mean values of a continuous variable for two independent 
-groups (the groups are not matched or paired in any way). 
+The two-sample unpaired t-test, also known as an independent sample t-test, is used to compare the mean values of a continuous variable for two independent 
+groups where the data points across the two groups are not matched or paired in any way. 
 
-In this example, we wish compare the mean value of age between males and females, or in other words we wish to know whether the true mean age is equal 
+In this example, we want to compare the mean age between males and females, or in other words we want to test whether the true mean age is equal 
 for males and females.
 
-`age` is the response variable (also called outcome variable or dependent variable); we are comparing mean `age` in Group 1 (male) with mean `age` in Group 0 (female), i.e. mean difference= Group 1 mean - Group 0 mean.
-
-The default behaviour the ```t.test()``` function is to assumes unequal variance.
+As we have all the data for our response variable (also called outcome variable or dependent variable), age in one object and we have a second object 
+which indicates which enties are female and which are male, we will use the formula method for specifying the comparision we want to make. 
 
 
 {% highlight r %}
@@ -664,6 +720,14 @@ t.test(age~male)
 ##        51.94595        47.31746
 {% endhighlight %}
 
+The output looks very similar to the output for the one sample t-test, with a couple of simple changes. 
+
+1. The name of the test has changed to "Two Sample t-test"
+
+
+
+
+The default behaviour the ```t.test()``` function is to assumes unequal variance.
 We can also use a factor variable to indicate the two groups (i.e. as opposed to an integer variable with groups coded as numbers).
 
 
