@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Statistics 
+title: Statistical Analysis 
 order: 9
 session: 3
-length: 20
+length: 60
 toc: true
 adapted: false
 attrib_name: Programming with R
@@ -12,3 +12,199 @@ attrib_copywrite: Software Carpentry
 attrib_license: CC-BY 4.0
 attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 ---
+
+R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R.
+
+# Loading the dataset
+
+To do statistics we need some observed data. We will use a dataset contained in the csv file [bp_dataset.csv]("../data/bp_dataset_session4.csv"). This dataset is based on a clinical trial to test the effect of two 
+drugs (Drug A and Drug B), compared with an inactive control drug (placebo), on blood pressure in people who have high blood pressure. The purpose of the 
+drugs is to reduce blood pressure. Some additional information about the people in the trial, such as their age and sex, is also provided (see 
+[codebook]("../data/bp_dataset_codebook_session4.xlsx") for further information about the variables).
+
+Let's start by loading the dataset. You need to ensure that the dataset is located in your current working directory. 
+We will read in the csv file and assign it to a variable called ```bp_dataset```. The ```header=TRUE``` argument means R will take the entries in the first row 
+ and use these to set the column headings. 
+
+```{r}
+bp_dataset<-read.csv(file="bp_dataset_session4.csv", header=TRUE)
+```
+
+Take a look at the column heads.
+
+```{r}
+head(bp_dataset)
+```
+
+Let's find out how many rows (observations) and variables (columns) are in this dataset using the 'dim' command (for dimensions).
+
+```{r}
+dim(bp_dataset)
+```
+
+
+<details>
+	<summary> Data Organisation </summary>
+	<pre>
+		
+When it comes to programming how you organise/store your data becomes important to facilitate efficient processing. This is beyond the
+remit of this course - but you can find out more about the principles of ["tidy" data](https://r4ds.had.co.nz/tidy-data.html).
+
+    </pre>
+</details>
+
+
+
+We also want to check the types of variable in the dataframe. The 'str' command allows us to check the structure of the dataframe and tells us 
+about the types of variables in our dataset.
+
+```{r}
+str(bp_dataset)
+```
+
+In this dataset we have both integer and character variables. Gender is provided as a binary, indicator or dummary variable called ```male``` coded as 0 
+(for female) and 1 (for male). This is not nessecary, if it was coded as a factor with the levels "Female" and "Male" R would be happy to use in the 
+statistical functions. Coding it in this way however, is more aligned with how it is used in statistics, and may make interpetation easier. 
+
+The variable `intervention` is a character variable, but could be an integer coded, for example, as Control=0, Drug A=1, 
+ Drug B=2.
+
+
+# Summary statistics
+
+In this dataset, there are 4 numeric variables. These are ```age```, and blood pressure measured at three timepoints (```bp_baseline```, ```bp_3m```, ```bp_6m```).
+
+We want to find the mean, median, standard deviation and variance for these variables. Let's start with the mean. To find the mean for `age` we can use:
+
+```{r}
+mean(bp_dataset$age)
+```
+
+We can attach the dataframe `bp_dataset`, so we don't need to use the $ notation for each command. Remember to use the 'detach' command when you wish to detach the dataframe.
+
+```{r}
+attach(bp_dataset)
+mean(age)
+```
+<br>
+
+#### Task 1
+Find the means for `bp_baseline` and `bp_3m`.
+
+<br>
+
+We can summarise for different subsets of the data by using R command 'tapply'. The 'tapply' command takes 3 arguments in the below command:
+
+ + `age`: numeric variable for which we wish to calculate the mean
+ + `male`: variable indicating the subgroups, in this case 0 and 1
+ + mean: the statistic we wish to calculate
+
+```{r}
+tapply(age, male, mean)
+```
+
+We can also use the code below. This calculates the mean for males [male==1]. Remember to use == to set the value of the variable `male` to be equal to 1.
+
+
+```{r}
+mean(age[male==1])
+```
+
+<br>
+
+We can do the same for intervention group.
+
+```{r}
+tapply(age, intervention, mean)
+```
+
+Let's say we want to calculate the mean age by sex and intervention group. We can use the 'aggregate' command. The FUN argument means function, which is the mean in this example.
+
+
+```{r}
+aggregate(age ~ male + intervention, data=bp_dataset, FUN=mean)
+```
+
+<br>
+We can also calculate the median, standard deviation, variance, minimum, maximum, range and sum. <br>
+*Note* The commands 'sd' and 'var' calculate the sample sd and variance, not the population sd and variance.
+
+```{r}
+sd(age)
+median(age)
+var(age)
+min(age)
+max(age)
+range(age)
+sum(age)
+```
+
+<br>
+
+We can also calculate percentiles. Using the 'quantile' command we can set the quantiles that we wish to find. Note that the 0.5 quantile is the median.
+
+```{r}
+quantile(age, probs = c(.25, .5, .75))
+```
+
+To get the inter-quartile range (75th percentile minus 25th percentile):
+
+```{r}
+IQR(age)
+```
+
+<br>
+
+#### Task 2
+
+Calculate the mean, SD, median, 10th and 90th percentiles for `bp_baseline` for each intervention group. Also calculate the 25th centile, 50th centile (median) and 75th centile for `age`, by each combination of sex and intervention group. The aggregate command will be needed for this task: note that we need to include the dataset as a function, even though we have attached `bp_dataset`.
+
+<br>
+
+We can create a frequency table for categorical variables using the 'table' command.
+
+```{r}
+table(male)
+```
+
+If we also wish to calculate proportions or percentages, we can use the 'prop.table' command. We first need to create the table and then pass to 'prop.table'.
+
+```{r}
+table.male<-table(male)
+prop.table(table.male)
+```
+
+We can also create a table for a subgroup of the data. For example: table by sex for people aged over 50.
+
+```{r}
+table(male[age>50])
+```
+
+We can also produce a table of proportions.
+
+```{r}
+table.male.over50<-table(male[age>49])
+prop.table(table.male.over50)
+```
+
+We can also produce cross-tabulations for two categorical variables.
+
+```{r}
+table(male, intervention)
+table.male.intervention<-table(male, intervention)
+prop.table(table.male.intervention)
+```
+
+<br>
+
+
+#### Task 3
+Create table of frequencies and a table of percentages by intervention group.
+
+<br>
+
+#### Task 4 
+Create table of frequencies and a table of percentages by intervention group for people whose baseline blood pressure is greater than or equal to 180.
+
+***
+
