@@ -793,8 +793,8 @@ t.test(age~male, var.equal=TRUE)
 ##        51.94595        47.31746
 {% endhighlight %}
 
-If you are unsure whether you can assume equal variance, you can run a statistical test called an F test to confirm. The null hypothesis for this test 
-is that variances are equal. So a significant result means that the assumption of equal variances is rejected. To compare the variances in age by gender:
+If you are unsure whether you can assume equal variance, you can run a statistical test called an F test to confirm using the function ```var.test()```.
+ The null hypothesis for this test is that variances are equal. So a significant result means that the assumption of equal variances is rejected. To compare the variances in age by gender:
 
 
 {% highlight r %}
@@ -907,9 +907,23 @@ t.test(bp_3m,bp_baseline,paired=FALSE)
 # Common statistical tests: Mann-Whitney test
 
 An non-parametric alternative to a t-test is a a Mann-Whitney U test, which is performed using by function ```wilcox.test()```. 
-It works in a very similar way to the two sample t.test, and many of the arguments are shared.
+It works in a very similar way to the two sample t- test, and many of the arguments are shared.
 
 
+{% highlight r %}
+wilcox.test(age~male, alternative = "greater")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	Wilcoxon rank sum test with continuity correction
+## 
+## data:  age by male
+## W = 1374, p-value = 0.06865
+## alternative hypothesis: true location shift is greater than 0
+{% endhighlight %}
 
 # Common statistical tests: ANOVA
 
@@ -957,7 +971,7 @@ summary(aov(bp_3m ~ intervention))
 Note, that the ```aov()``` call doesn't output the test result we want. We have to additionally use the function ```summary()``` to extract and 
 print the required test result. This is not an uncommon approach for using statistical tests in R.
 
-We can get the exact same result using the ```anova()``` function. This version of the anova requires a linear model to be fit first using the 
+We can get the same result using the ```anova()``` function (give a rounding difference). This version of the anova requires a linear model to be fit first using the 
 ```lm()``` function.
 
 
@@ -978,9 +992,88 @@ anova(lm(bp_3m ~ intervention))
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 {% endhighlight %}
 
-#### Task 17
+## Activity
 Perform a one-way ANOVA to compare `age` across the three intervention groups. 
 
-***
+
 # Common statistical tests: Chi-square test
 
+
+{% highlight r %}
+chisq.test(male ~ intervention)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Warning in is.na(male ~ intervention): is.na() applied to non-(list or vector)
+## of type 'language'
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in sum(x): invalid 'type' (language) of argument
+{% endhighlight %}
+
+# Common statistical tests: Correlation
+
+
+Before we perform a correlation test we can create a scatterplot to check the relationship between variables. For example, to check the relationship between `age` and `bp_baseline`:
+
+
+{% highlight r %}
+plot(age, bp_baseline)
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-44](https://raw.githubusercontent.com/UniExeterRSE/intro-to-r/main/figure/rmarkdown/09_stats/unnamed-chunk-44-1.png)
+
+For a Pearson correlation, remember that variables should be distributed normally and with a linear relationship. The Pearson correlation is the default method for the 'cor.test' command. We can use 'cor.test' to find the Pearson correlation between `age` and `bp_baseline`
+
+
+{% highlight r %}
+cor.test(age, bp_baseline)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  age and bp_baseline
+## t = 0.11268, df = 98, p-value = 0.9105
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.1854507  0.2073366
+## sample estimates:
+##        cor 
+## 0.01138201
+{% endhighlight %}
+
+For a Spearman correlation, we use `cor.test' but change the 'method' argument:
+
+{% highlight r %}
+cor.test(age, bp_baseline, method="spearman")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Warning in cor.test.default(age, bp_baseline, method = "spearman"): Cannot
+## compute exact p-value with ties
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## 	Spearman's rank correlation rho
+## 
+## data:  age and bp_baseline
+## S = 165406, p-value = 0.9412
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##         rho 
+## 0.007464794
+{% endhighlight %}
