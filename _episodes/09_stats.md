@@ -17,7 +17,8 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 
-R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R.
+R is synmomous with data analysis. Here we will learn how to perform a number of common statistical tests with R. Please note that the focus here is on how
+to perform a given test in R, it is not to discuss the merits of or scenarios in which you would use a specific test.
 
 # Loading the dataset
 
@@ -457,7 +458,7 @@ Create table of frequencies and a table of percentages for each intervention gro
 Create table of frequencies and a table of percentages for intervention group stratified by whether their baseline blood pressure is 
 greater than or equal to 180.
 
-# Common statistical tests : One-sample t-test
+# Common statistical tests: One-sample t-test
 
 There are several types of t-test. We will start with the simplest: a one-sample 2-sided t-test to test the null hypothesis that the true mean 
 value of a continuous variable is equal to a pre-specified value. The default behaviour, and the most common application is to compare to a value of 0.
@@ -484,15 +485,26 @@ t.test(age)
 {% endhighlight %}
 
 
+We can see in the console, we get a more verbose output than we have seen before. Mainly because the result of statistical test often includes multiple
+statistics, and the orginial writers of the ```t.test()``` function have made an effort to present these back to the user in an easy to intepret way. 
 
-Here we can see our results is highly significant, as given we are a population of adults, they are all a lot older than 0 so it is not surprising.
+We can see there is a statement at the top of the output reminding or confirming which statistical test we have performed, and underneath this a confirmation
+of which variable/data this was performed on. 
 
+We then have a line of multiple test statistics, including the p-value. Here we can see our test result is highly significant with p < 2.2e-16. Given 
+we are analysing a population of adults, they are all a lot older than 0 so it is not surprising. The function writers hhave take the executive decision
+to report the p-value as < 2.2e-16 rather than give the specific value. In some fields/journals/research group, this approximation is not good enough. 
+Later we will show you how to extract a more precise p-value. 
 
-We can vary the width of the confidence interval provided as part of the t-test output - the default is 95% CI.
+Underneath this we have a confirmation of the alternative hypothesis the statistic was considered against, we then have the confidence interval and the 
+estimated mean of the sample.
+
+We can vary the width of the confidence interval provided as part of the t-test output, by including the argument ```conf.int```. The default is 95% CI.
+For the 90% confidence interval, we can run
 
 
 {% highlight r %}
-t.test(age, mu=50, conf.level=0.90)
+t.test(age, conf.level=0.90)
 {% endhighlight %}
 
 
@@ -502,8 +514,8 @@ t.test(age, mu=50, conf.level=0.90)
 ## 	One Sample t-test
 ## 
 ## data:  age
-## t = -0.7879, df = 99, p-value = 0.4326
-## alternative hypothesis: true mean is not equal to 50
+## t = 39.826, df = 99, p-value < 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
 ## 90 percent confidence interval:
 ##  46.98587 51.07413
 ## sample estimates:
@@ -511,36 +523,15 @@ t.test(age, mu=50, conf.level=0.90)
 ##     49.03
 {% endhighlight %}
 
-We can also specify the dataset and a subset of the data if needed. For example, in females only:
+Here we can see that the majority of the output is unchanged, it is just the confidence interval which is different. 
+
+The default behaviour is to perform a two-sided t-test. We can specify a one-sided t-test testing whether the true mean of the variable is greater than 
+or less than the specified value  by including the argument ```alternative``` and setting it to either ```greater``` or ```less```. To test 
+whether the true mean `age` is greater than 0 we use:
 
 
 {% highlight r %}
-female_only<-subset(bp_dataset, male==0)
-head(female_only)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##    ptid male age intervention bp_baseline bp_3m bp_6m
-## 2     2    0  46       Drug B         200   162   177
-## 3     3    0  37       Drug A         198   122   166
-## 4     4    0  46       Drug A         202   148   128
-## 7     7    0  65      Control         166   140   152
-## 8     8    0  69       Drug A         201   141   113
-## 11   11    0  53       Drug A         186   107   122
-{% endhighlight %}
-
-
-
-{% highlight r %}
-detach(bp_dataset)
-{% endhighlight %}
-
-
-{% highlight r %}
-attach(female_only)
-t.test(age, mu=50)
+t.test(age, alternative="greater")
 {% endhighlight %}
 
 
@@ -550,61 +541,8 @@ t.test(age, mu=50)
 ## 	One Sample t-test
 ## 
 ## data:  age
-## t = 0.8605, df = 36, p-value = 0.3952
-## alternative hypothesis: true mean is not equal to 50
-## 95 percent confidence interval:
-##  47.35957 56.53232
-## sample estimates:
-## mean of x 
-##  51.94595
-{% endhighlight %}
-
-
-
-{% highlight r %}
-detach(female_only)
-attach(bp_dataset)
-{% endhighlight %}
-
-We can also specify a 1-sided t-test looking for whether the true mean of the variable is greater than or less than the specified value. To test whether true mean `age` is less than 50:
-
-
-{% highlight r %}
-t.test(age, mu=50, alternative="less")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## 	One Sample t-test
-## 
-## data:  age
-## t = -0.7879, df = 99, p-value = 0.2163
-## alternative hypothesis: true mean is less than 50
-## 95 percent confidence interval:
-##      -Inf 51.07413
-## sample estimates:
-## mean of x 
-##     49.03
-{% endhighlight %}
-
-To test whether true mean `age` is greater than 45:
-
-
-{% highlight r %}
-t.test(age, mu=45, alternative="greater")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## 	One Sample t-test
-## 
-## data:  age
-## t = 3.2735, df = 99, p-value = 0.000732
-## alternative hypothesis: true mean is greater than 45
+## t = 39.826, df = 99, p-value < 2.2e-16
+## alternative hypothesis: true mean is greater than 0
 ## 95 percent confidence interval:
 ##  46.98587      Inf
 ## sample estimates:
@@ -612,8 +550,7 @@ t.test(age, mu=45, alternative="greater")
 ##     49.03
 {% endhighlight %}
 
-
-Although this is a very uncommon application (due to the need to justify the choice of value), you can perform a t-test against a value 
+Although this is a very uncommon application (due to the need to justify the choice of value), you can perform a one sample t-test against a value 
 other than 0 by including the argument ```mu```. For example, we can use a t-test to test if true mean ```age```=50.
 
 
@@ -637,17 +574,74 @@ t.test(age, mu=50)
 ##     49.03
 {% endhighlight %}
 
+If you are only performing one (or a few) statistical tests, and you are working interatively then you might be ok to manually copy the result from the 
+console. However, there are likely times when you want to extract the result from the test for further processing, for example enter it into a table to 
+save to your computer. We can save the output of a t.test (or indeed any other staistical test or function) to a variable, meaning we can manipulate it 
+further.
 
 
-### Two-sample unpaired t-test
 
-The two-sample unpaired t-test is used to compare the mean values of a continuous variable for two independent groups (the groups are not matched or paired in any way).
+{% highlight r %}
+t.out<-t.test(age, mu=50)
+class(t.out)
+{% endhighlight %}
 
-In this example, we wish compare the mean value of age between males and females, or in other words we wish to know whether the true mean `age` is equal for males and females.
+
+
+{% highlight text %}
+## [1] "htest"
+{% endhighlight %}
+
+
+
+{% highlight r %}
+names(t.out)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##  [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
+{% endhighlight %}
+
+
+
+{% highlight r %}
+t.out$p.value
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 0.432636
+{% endhighlight %}
+
+
+
+{% highlight r %}
+t.out$estimate
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## mean of x 
+##     49.03
+{% endhighlight %}
+
+
+# Common statistical tests: Two-sample unpaired t-test
+
+The two-sample unpaired t-test, also known as an independent sample t-test is used to compare the mean values of a continuous variable for two independent 
+groups (the groups are not matched or paired in any way). 
+
+In this example, we wish compare the mean value of age between males and females, or in other words we wish to know whether the true mean age is equal 
+for males and females.
 
 `age` is the response variable (also called outcome variable or dependent variable); we are comparing mean `age` in Group 1 (male) with mean `age` in Group 0 (female), i.e. mean difference= Group 1 mean - Group 0 mean.
 
-*Note* This version of the t-test assumes unequal variance.
+The default behaviour the ```t.test()``` function is to assumes unequal variance.
 
 
 {% highlight r %}
