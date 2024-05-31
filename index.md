@@ -32,7 +32,7 @@ This a hybrid workshop run over 3 sessions. The [schedule can be found here](htt
 
 | Dates | Time  | Venue | Sign up link | Registration closes |
 |--- |--- |--- | --- | --- |
-| 3rd, 10th & 17th June 2024 | 10am-1pm | Training Room 4, Old Library|  | 28th May 2024 |
+| 4th, 11th & 18th June 2024 | 10am-1pm | Training Room 4, Old Library|  | 28th May 2024 |
 
 Please note that our workshops are very popular, and places will be allocated on a first come, first served basis. You can register your interest for this course using the link above. Registration will close ~ 1 week before the workshop is scheduled to start. Your place will be confirmed during the week of the workshop.
 
