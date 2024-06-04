@@ -16,7 +16,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 
-# Inbuilt datasets
+# Inbuilt Datasets
 
 R has a number of datasets included for you to practice with. 
 We can get a list of these by running the command ```data()```
@@ -27,6 +27,8 @@ data()
 {% endhighlight %}
 
 This command won't produce any output but open a file in the scripts pane that lists the available datasets.
+
+(Alt text!)["../images/r_data.png"]
 
 In this session, we will be using the built-in R data sets stored in the variables ```iris``` & ```mtcars```. 
 By having our data stored in a variable means we can easily use it with R functions and start to
@@ -83,7 +85,7 @@ To explore data frames, there are a number of relevant functions:
 
 
 
-# Subsetting data
+# Subsetting Data
 
 There are many occasions we want to "look" at some part of the data. Extract a subset is known as slicing.
 If we want to get a single value from the data frame, we can index a specific position using square brackets.
@@ -221,7 +223,7 @@ iris[, 2]
 
 
 
-# Data types 
+# Data Types 
 
 One key feature of a data frame is each column is classed as a specific data type. 
 
@@ -309,7 +311,7 @@ length(y)
 {% endhighlight %}
 
 
-# Converting between data types
+# Converting Between Datatypes
 
 It can be critical that R has correctly assigned the right data type to your variable. If it has not you may run into 
 errors when processing it. You therefore may want to convert between different data types. This can be done with the 
@@ -329,7 +331,7 @@ typeof(y)
 ## [1] "character"
 {% endhighlight %}
 
-## Activity: Determining data types
+## Activity: Determining Data Yypes
 
 Create a variable with the numbers 9,2,200, and 14.
 What class do you predict this variable to be? Use an R function to confirm your answer.
@@ -337,7 +339,7 @@ If it is not the data type you expected, can you force R to convert it to an int
 Divide each element of the variable in half. Does this change the type of variable?
 
 
-# Data structures
+# Data Structures
 
 R has a number of inbuilt structures that can be used to store datasets. We have encountered one of these already 
 the data.frame. Other include: 

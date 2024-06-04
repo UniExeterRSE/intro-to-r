@@ -17,7 +17,7 @@ Often we need to manipulate or extract parts of our dataset prior to doing any a
 
 
 
-# Conditional subsetting
+# Conditional Subsetting
 
 We have already looked at slicing subsets, where we knew the indexs of the rows or columns of the entries we wanted. 
 There may be times when, instead we want to select rows based on a specific condition. This would require a conditional 

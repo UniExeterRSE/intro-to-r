@@ -51,7 +51,7 @@ There are two main ways of interacting with R: using the console or by using
 a script. A script is a text file that contains your code. R scripts are often saved with the file extension .r or .R.
 
 We want our code and workflow to be reproducible. In other words, we want to write code in a way that
-anyone (including our future selves) can easily replicate, such they will obtain the same results from our code
+anyone (including ou future selves) can easily replicate, such they will obtain the same results from our code
 on their computer. If we type our commands directly into the Console, they will be forgotten when you close the session. 
 It is preferable to type the commands you want to run directly into the script editor, so that you can save the script. This way, 
 you have a complete record of what you did, 
