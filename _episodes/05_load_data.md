@@ -29,14 +29,12 @@ Assuming you have downloaded the file into your current working directory, you c
 read.csv(file = "worms.csv", header = TRUE)
 {% endhighlight %}
 
-
+Some errors you might come across:
 
 {% highlight text %}
 ## Warning in file(file, "rt"): cannot open file 'worms.csv': No such file or
 ## directory
 {% endhighlight %}
-
-
 
 {% highlight text %}
 ## Error in file(file, "rt"): cannot open the connection

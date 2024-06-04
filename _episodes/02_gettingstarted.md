@@ -48,7 +48,7 @@ We should also note that, the two most important reasons for choosing a language
 
 [RStudio](https://www.rstudio.com/), is an Integrated Development Environment (IDE) that provides an interface designed to improve the experience of programming with R, and to facilitate more efficient and reproducible code development. It is designed so you can have multiple elements visible at the same time within a single programme. For example plots, tables and code, rather than juggle different programmes or windows. 
 
-We will use RStudio IDE to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots we will generate. RStudio can also be used for other things (e.g., version control, developing packages, writing Shiny apps, creating documents and slides) that we will not cover during the workshop. It can be a very powerful tool for managing how you develop code, software or programmes. 
+We will use the RStudio IDE to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots we will generate. RStudio can also be used for other things (e.g., version control, developing packages, writing Shiny apps, creating documents and slides) that we will not cover during the workshop. It can be a very powerful tool for managing how you develop code, software or programmes. 
 
 
 # Navigating RStudio
