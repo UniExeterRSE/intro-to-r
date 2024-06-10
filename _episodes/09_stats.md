@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Statistical Analysis 
+title: Statistical analysis 
 order: 9
 session: 3
 length: 60
@@ -70,7 +70,7 @@ dim(bp_dataset)
 
 
 <details>
-	<summary> Data Organisation </summary>
+	<summary> Data organisation </summary>
 	<pre>
 		
 When it comes to programming how you organise/store your data becomes important to facilitate efficient processing. This is beyond the

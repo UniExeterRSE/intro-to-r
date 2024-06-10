@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Control Flow 
+title: Control flow 
 order: 7
 session: 2
 length: 20
@@ -16,7 +16,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 R is just another programming language and here we are going to introduce some common programming paradigms that
 empower you to write code efficiently and control the flow of information. 
 
-### For Loops
+### For loops
 
 Code is often focused around highly repetative tasks. 
 Suppose we want to print each word in a sentence.
@@ -231,7 +231,7 @@ length(vowels)
 Can you edit the for loop to print the sentance backwards?
 
 
-# Control Flow
+# Control flow
 
 As well as repeating tasks, it's possible we want R to only perform certain tasks in certain situations.
 To do this we need to write code that automatically decides between multiple options.
