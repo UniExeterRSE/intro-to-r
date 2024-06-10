@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Up and Running with R
+title: Getting up and running with R
 order: 2
 session: 1
 length: 20

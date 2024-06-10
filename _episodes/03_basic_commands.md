@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Running Commands with R
+title: Running commands with R
 order: 3
 session: 1
 length: 20
@@ -18,7 +18,7 @@ attrib_license_link: https://creativecommons.org/licenses/by/4.0/
 
 
 
-# Executing Commands in R
+# Executing commands in R
 
 The console pane (in RStudio, the bottom left panel) is the place where R is
 waiting for you to tell it what to do, and where it will show the results of a

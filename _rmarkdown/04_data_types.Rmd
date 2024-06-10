@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Data Types and Structures
+title: Data types and structures
 order: 4
 session: 1
 length: 20

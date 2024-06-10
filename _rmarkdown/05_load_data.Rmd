@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Loading Data from Files
+title: Loading data from files
 order: 5
 session: 1
 length: 20

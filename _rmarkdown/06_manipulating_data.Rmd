@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Manipulating Datasets
+title: Manipulating datasets
 order: 6
 session: 1
 length: 20
