@@ -51,7 +51,7 @@ There are two main ways of interacting with R: using the console or by using
 a script. A script is a text file that contains your code. R scripts are often saved with the file extension .r or .R.
 
 We want our code and workflow to be reproducible. In other words, we want to write code in a way that
-anyone (including ou future selves) can easily replicate, such they will obtain the same results from our code
+anyone (including our future selves) can easily replicate, such they will obtain the same results from our code
 on their computer. If we type our commands directly into the Console, they will be forgotten when you close the session. 
 It is preferable to type the commands you want to run directly into the script editor, so that you can save the script. This way, 
 you have a complete record of what you did, 
@@ -286,8 +286,8 @@ This is different from the way spreadsheets work.
 	`<-` is the assignment operator. It assigns values on the right to objects on
     the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
     be read as 3 **goes into** `x`.  For historical reasons, you can also use `=` for assignments,
-    but not in every context. Because of the [slight](http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html) 
-    [differences](https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html) in syntax,
+    but not in every context. Because of the (slight)[http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html] 
+    (differences)[https://web.archive.org/web/20130610005305/https://stat.ethz.ch/pipermail/r-help/2009-March/191462.html] in syntax,
     it is good practice to use always `<-` for assignments, except when specifying the values of
     arguments in functions, when only `=` should be used, see below.
 
