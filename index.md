@@ -28,14 +28,6 @@ This is a course for novices so there is no pre-requisite knowledge.
 
 This a hybrid workshop run over 3 sessions. The [schedule can be found here](https://uniexeterrse.github.io/intro-to-r/schedule.html). 
 
-## Upcoming course dates
-
-| Dates | Time  | Venue | Sign up link | Registration closes |
-|--- |--- |--- | --- | --- |
-| 4th, 11th & 18th June 2024 | 10am-1pm | Training Room 4, Old Library|  | 28th May 2024 |
-
-Please note that our workshops are very popular, and places will be allocated on a first come, first served basis. You can register your interest for this course using the link above. Registration will close ~ 1 week before the workshop is scheduled to start. Your place will be confirmed during the week of the workshop.
-
 ## Set-up instructions for attendees
 
 Students will need to bring their own laptops and are expected to have preinstalled both R and Rstudio. Installation instructions are available [here](https://uniexeterrse.github.io/intro-to-r/setup.html).
