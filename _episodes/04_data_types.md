@@ -549,7 +549,7 @@ l <- list(v_log, v_num, v_it, iris)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'v_it' not found
+## Error: object 'v_it' not found
 {% endhighlight %}
 
 
@@ -561,7 +561,7 @@ l
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'l' not found
+## Error: object 'l' not found
 {% endhighlight %}
 
 
